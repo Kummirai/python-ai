@@ -59,4 +59,4 @@ Each level includes:
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/kummirai/python-ai-course.git
+   git clone https://github.com/kummirai/python-ai.git
