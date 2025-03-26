@@ -190,63 +190,40 @@
                                             File handling and exceptions
                                         </li>
                                     </ul>
-                                    <!-- Beginner Section Tutorial -->
-<div class="accordion mb-3" id="beginnerTutorial">
-  <div class="card tutorial-card mb-2">
-    <div class="card-header" id="beginnerTutorialHeading">
+                                    <!-- Beginner Section Resources -->
+<div class="accordion mb-3" id="beginnerResources">
+  <div class="card resource-card mb-2">
+    <div class="card-header" id="beginnerResourcesHeading">
       <h5 class="mb-0">
         <button class="btn btn-link collapse-btn" type="button" data-bs-toggle="collapse" 
-                data-bs-target="#beginnerTutorialCollapse" aria-expanded="false" 
-                aria-controls="beginnerTutorialCollapse">
-          <i class="fas fa-book me-2"></i>Tutorial: Python Basics
+                data-bs-target="#beginnerResourcesCollapse" aria-expanded="false" 
+                aria-controls="beginnerResourcesCollapse">
+          <i class="fas fa-external-link-alt me-2"></i>Additional Resources
         </button>
       </h5>
     </div>
-    <div id="beginnerTutorialCollapse" class="collapse" aria-labelledby="beginnerTutorialHeading" 
-         data-parent="#beginnerTutorial">
-      <div class="card-body tutorial-content">
-        <h4>Variables and Data Types</h4>
-        <p>Python has several basic data types:</p>
-        <ul>
-          <li><strong>Integers:</strong> Whole numbers (e.g., 5, -3)</li>
-          <li><strong>Floats:</strong> Decimal numbers (e.g., 3.14, -0.001)</li>
-          <li><strong>Strings:</strong> Text (e.g., "hello", 'AI')</li>
-          <li><strong>Booleans:</strong> True or False</li>
+    <div id="beginnerResourcesCollapse" class="collapse" aria-labelledby="beginnerResourcesHeading" 
+         data-parent="#beginnerResources">
+      <div class="card-body">
+        <h5>Python Fundamentals Resources</h5>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <a href="https://docs.python.org/3/tutorial/" target="_blank">Python Official Documentation</a>
+            <span class="text-muted d-block small">Complete Python tutorial from the creators</span>
+          </li>
+          <li class="list-group-item">
+            <a href="https://www.learnpython.org/" target="_blank">LearnPython.org</a>
+            <span class="text-muted d-block small">Interactive Python tutorial</span>
+          </li>
+          <li class="list-group-item">
+            <a href="https://realpython.com/start-here/" target="_blank">Real Python Tutorials</a>
+            <span class="text-muted d-block small">Practical Python tutorials for beginners</span>
+          </li>
+          <li class="list-group-item">
+            <a href="https://www.codecademy.com/learn/learn-python-3" target="_blank">Codecademy Python Course</a>
+            <span class="text-muted d-block small">Interactive coding exercises</span>
+          </li>
         </ul>
-        
-        <div class="code-container">
-          <pre><code class="python"># Variable assignment
-x = 5               # integer
-y = 3.14            # float
-name = "Alice"      # string
-is_active = True    # boolean
-
-# Printing variables
-print(x)
-print("Hello", name)</code></pre>
-        </div>
-        
-        <h4>Control Flow</h4>
-        <p>Python uses indentation to define code blocks:</p>
-        
-        <div class="code-container">
-          <pre><code class="python"># If-else statement
-age = 18
-if age >= 18:
-    print("You are an adult")
-else:
-    print("You are a minor")
-
-# For loop
-for i in range(5):  # Prints numbers 0-4
-    print(i)
-
-# While loop
-count = 0
-while count < 5:
-    print(count)
-    count += 1</code></pre>
-        </div>
       </div>
     </div>
   </div>
@@ -374,42 +351,45 @@ while count < 5:
                                             Data cleaning and preprocessing
                                         </li>
                                     </ul>
-                                    <!-- Intermediate Section Tutorial -->
-<div class="accordion mb-3" id="intermediateTutorial">
-  <div class="card tutorial-card mb-2">
-    <div class="card-header" id="intermediateTutorialHeading">
+                                    <!-- Intermediate Section 
+                                    
+                                    <!-- Activities Accordion --><div class="accordion mb-3" id="intermediateResources">
+  <div class="card resource-card mb-2">
+    <div class="card-header" id="intermediateResourcesHeading">
       <h5 class="mb-0">
         <button class="btn btn-link collapse-btn" type="button" data-bs-toggle="collapse" 
-                data-bs-target="#intermediateTutorialCollapse" aria-expanded="false" 
-                aria-controls="intermediateTutorialCollapse">
-          <i class="fas fa-book me-2"></i>Tutorial: Data Science with Python
+                data-bs-target="#intermediateResourcesCollapse" aria-expanded="false" 
+                aria-controls="intermediateResourcesCollapse">
+          <i class="fas fa-external-link-alt me-2"></i>Additional Resources
         </button>
       </h5>
     </div>
-    <div id="intermediateTutorialCollapse" class="collapse" aria-labelledby="intermediateTutorialHeading" 
-         data-parent="#intermediateTutorial">
-      <div class="card-body tutorial-content">
-        <h4>NumPy Basics</h4>
-        <p>NumPy provides support for large, multi-dimensional arrays and matrices:</p>
-        
-        <div class="code-container">
-          <pre><code class="python">import numpy as np
-
-# Creating arrays
-arr1 = np.array([1, 2, 3])          # 1D array
-arr2 = np.array([[1, 2], [3, 4]])   # 2D array
-
-# Array operations
-print(arr1 + 5)      # [6, 7, 8]
-print(arr1 * 2)      # [2, 4, 6]
-print(np.dot(arr2, arr2))  # Matrix multiplication</code></pre>
-        </div>
+    <div id="intermediateResourcesCollapse" class="collapse" aria-labelledby="intermediateResourcesHeading" 
+         data-parent="#intermediateResources">
+      <div class="card-body">
+        <h5>Data Science Resources</h5>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <a href="https://numpy.org/doc/stable/user/quickstart.html" target="_blank">NumPy Quickstart</a>
+            <span class="text-muted d-block small">Official NumPy tutorial</span>
+          </li>
+          <li class="list-group-item">
+            <a href="https://pandas.pydata.org/docs/getting_started/intro_tutorials/index.html" target="_blank">Pandas Tutorials</a>
+            <span class="text-muted d-block small">Official Pandas learning resources</span>
+          </li>
+          <li class="list-group-item">
+            <a href="https://seaborn.pydata.org/tutorial.html" target="_blank">Seaborn Tutorial</a>
+            <span class="text-muted d-block small">Statistical data visualization guide</span>
+          </li>
+          <li class="list-group-item">
+            <a href="https://www.datacamp.com/courses/intro-to-python-for-data-science" target="_blank">DataCamp Python for Data Science</a>
+            <span class="text-muted d-block small">Interactive data science course</span>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
 </div>
-                                    
-                                    <!-- Activities Accordion -->
                                     <div class="accordion mb-3" id="intermediateActivities">
                                         <div class="card activity-card mb-2">
                                             <div class="card-header" id="intermediateActivitiesHeading">
