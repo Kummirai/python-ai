@@ -2,8 +2,6 @@
 
 A complete roadmap for learning Artificial Intelligence with Python, from fundamentals to advanced deep learning concepts.
 
-![AI with Python Banner](https://example.com/path-to-your-banner-image.jpg) *(Replace with actual image URL)*
-
 ## 📌 Overview
 
 This repository contains a structured learning path for mastering AI concepts using Python. The curriculum is divided into four levels with hands-on activities, assignments, and projects at each stage.
