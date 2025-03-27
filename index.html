@@ -187,6 +187,13 @@
       border-radius: 5px;
       margin-bottom: 20px;
     }
+    
+          .practice-card {
+            transition: transform 0.2s;
+        }
+        .practice-card:hover {
+            transform: scale(1.02);
+        }
 
     .quiz-question {
       background-color: #e7f1ff;
@@ -882,6 +889,337 @@ print("Is not x == y?", not x == y)</code></pre>
                       <i class="fas fa-check-circle text-success me-2"></i>
                       Functions and modules
                     </li>
+                    <!-- Functions Section -->
+        <div class="accordion" id="functionsAccordion">
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                        <strong>1. Python Functions Basics</strong>
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show">
+                    <div class="accordion-body">
+                        <p>Functions are reusable blocks of code that perform a specific task.</p>
+                        
+                        <h4 class="mt-4">Function Syntax</h4>
+                        <div class="code-block">
+                            def function_name(parameters):
+                                """Docstring (optional)"""
+                                # Function body
+                                return value  # optional
+                        </div>
+                        
+                        <h4 class="mt-4">Example</h4>
+                        <div class="code-block">
+                            def greet(name):
+                                """This function greets the person passed in"""
+                                print(f"Hello, {name}!")
+                            
+                            greet("Alice")  # Output: Hello, Alice!
+                        </div>
+                        
+                        <div class="alert alert-info mt-4">
+                            <strong>Key Points:</strong>
+                            <ul>
+                                <li><code>def</code> keyword starts the function definition</li>
+                                <li>Function names follow the same rules as variable names</li>
+                                <li>Parameters are optional</li>
+                                <li><code>return</code> statement is optional</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                        <strong>2. Function Parameters & Arguments</strong>
+                    </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse">
+                    <div class="accordion-body">
+                        <h4>Positional Arguments</h4>
+                        <div class="code-block">
+                            def describe_pet(animal_type, pet_name):
+                                print(f"I have a {animal_type} named {pet_name}.")
+                            
+                            describe_pet('hamster', 'Harry')
+                        </div>
+                        
+                        <h4 class="mt-4">Keyword Arguments</h4>
+                        <div class="code-block">
+                            describe_pet(pet_name='Harry', animal_type='hamster')
+                        </div>
+                        
+                        <h4 class="mt-4">Default Parameters</h4>
+                        <div class="code-block">
+                            def describe_pet(pet_name, animal_type='dog'):
+                                print(f"I have a {animal_type} named {pet_name}.")
+                            
+                            describe_pet('Rex')  # Uses default animal_type
+                        </div>
+                        
+                        <h4 class="mt-4">Arbitrary Arguments (*args)</h4>
+                        <div class="code-block">
+                            def make_pizza(*toppings):
+                                print("Making pizza with:")
+                                for topping in toppings:
+                                    print(f"- {topping}")
+                            
+                            make_pizza('pepperoni')
+                            make_pizza('mushrooms', 'green peppers', 'extra cheese')
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+                        <strong>3. Return Values</strong>
+                    </button>
+                </h2>
+                <div id="collapseThree" class="accordion-collapse collapse">
+                    <div class="accordion-body">
+                        <div class="code-block">
+                            def square(number):
+                                return number * number
+                            
+                            result = square(4)
+                            print(result)  # Output: 16
+                        </div>
+                        
+                        <h4 class="mt-4">Returning Multiple Values</h4>
+                        <div class="code-block">
+                            def get_user():
+                                name = "John"
+                                age = 30
+                                return name, age  # Returns a tuple
+                            
+                            user_name, user_age = get_user()
+                        </div>
+                        
+                        <div class="alert alert-warning mt-4">
+                            <strong>Note:</strong> All Python functions return <code>None</code> if no return statement is specified.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour">
+                        <strong>4. Python Modules</strong>
+                    </button>
+                </h2>
+                <div id="collapseFour" class="accordion-collapse collapse">
+                    <div class="accordion-body">
+                        <p>A module is a file containing Python definitions and statements.</p>
+                        
+                        <h4 class="mt-4">Creating a Module</h4>
+                        <p>Save as <code>mymodule.py</code>:</p>
+                        <div class="code-block">
+                            def greeting(name):
+                                print(f"Hello, {name}")
+                            
+                            person = {
+                                "name": "John",
+                                "age": 36,
+                                "country": "Norway"
+                            }
+                        </div>
+                        
+                        <h4 class="mt-4">Using a Module</h4>
+                        <div class="code-block">
+                            import mymodule
+                            
+                            mymodule.greeting("Alice")  # Hello, Alice
+                            print(mymodule.person["name"])  # John
+                        </div>
+                        
+                        <h4 class="mt-4">Import Specific Parts</h4>
+                        <div class="code-block">
+                            from mymodule import greeting
+                            
+                            greeting("Bob")  # No need for module prefix
+                        </div>
+                        
+                        <h4 class="mt-4">Built-in Modules</h4>
+                        <div class="code-block">
+                            import math
+                            print(math.sqrt(16))  # 4.0
+                            
+                            from datetime import datetime
+                            print(datetime.now())
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Practice Section -->
+        <h2 class="mt-5 mb-4">Practice Exercises</h2>
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="card practice-card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Exercise 1: Basic Function</h5>
+                        <p class="card-text">Create a function called <code>calculate_area</code> that takes length and width as parameters and returns the area of a rectangle.</p>
+                        <button class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#solution1">Show Solution</button>
+                        <div id="solution1" class="collapse mt-3">
+                            <div class="code-block">
+                                def calculate_area(length, width):
+                                    return length * width
+                                
+                                print(calculate_area(5, 3))  # Output: 15
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6 mb-4">
+                <div class="card practice-card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Exercise 2: Default Parameters</h5>
+                        <p class="card-text">Create a function called <code>greet</code> that takes a name parameter with a default value of "Guest". The function should print a greeting message.</p>
+                        <button class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#solution2">Show Solution</button>
+                        <div id="solution2" class="collapse mt-3">
+                            <div class="code-block">
+                                def greet(name="Guest"):
+                                    print(f"Hello, {name}!")
+                                
+                                greet()          # Hello, Guest!
+                                greet("Alice")   # Hello, Alice!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6 mb-4">
+                <div class="card practice-card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Exercise 3: Module Creation</h5>
+                        <p class="card-text">Create a module named <code>calculator.py</code> with functions for add, subtract, multiply, and divide. Then import and use these functions in another script.</p>
+                        <button class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#solution3">Show Solution</button>
+                        <div id="solution3" class="collapse mt-3">
+                            <p>calculator.py:</p>
+                            <div class="code-block">
+                                def add(a, b):
+                                    return a + b
+                                
+                                def subtract(a, b):
+                                    return a - b
+                                
+                                def multiply(a, b):
+                                    return a * b
+                                
+                                def divide(a, b):
+                                    return a / b
+                            </div>
+                            <p>main.py:</p>
+                            <div class="code-block">
+                                import calculator
+                                
+                                print(calculator.add(5, 3))       # 8
+                                print(calculator.subtract(5, 3))  # 2
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6 mb-4">
+                <div class="card practice-card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Exercise 4: Variable Scope</h5>
+                        <p class="card-text">Demonstrate variable scope by creating a function that modifies a global variable and another that uses a local variable with the same name.</p>
+                        <button class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#solution4">Show Solution</button>
+                        <div id="solution4" class="collapse mt-3">
+                            <div class="code-block">
+                                count = 10  # Global variable
+                                
+                                def modify_global():
+                                    global count
+                                    count = 20
+                                
+                                def use_local():
+                                    count = 30  # Local variable
+                                    print(count)
+                                
+                                print(count)  # 10 (global)
+                                modify_global()
+                                print(count)  # 20 (global modified)
+                                use_local()   # 30 (local)
+                                print(count)  # 20 (global unchanged)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Quiz Section -->
+        <h2 class="mt-5 mb-4">Quiz Questions</h2>
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5>1. What keyword is used to define a function in Python?</h5>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q1" id="q1a">
+                    <label class="form-check-label" for="q1a">function</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q1" id="q1b" correct>
+                    <label class="form-check-label" for="q1b">def</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q1" id="q1c">
+                    <label class="form-check-label" for="q1c">define</label>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5>2. Which of these is the correct way to import only the sqrt function from the math module?</h5>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q2" id="q2a">
+                    <label class="form-check-label" for="q2a">import sqrt from math</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q2" id="q2b" correct>
+                    <label class="form-check-label" for="q2b">from math import sqrt</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q2" id="q2c">
+                    <label class="form-check-label" for="q2c">import math.sqrt</label>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5>3. What does a function return if it has no return statement?</h5>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q3" id="q3a">
+                    <label class="form-check-label" for="q3a">0</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q3" id="q3b" correct>
+                    <label class="form-check-label" for="q3b">None</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q3" id="q3c">
+                    <label class="form-check-label" for="q3c">An error occurs</label>
+                </div>
+            </div>
+        </div>
+        
+        <button id="checkAnswers" class="btn btn-success mb-4">Check Answers</button>
+        <div id="quizResult" class="alert alert-info" style="display: none;"></div>
+    </div>
                     <li class="list-group-item">
                       <i class="fas fa-check-circle text-success me-2"></i>
                       File handling and exceptions
@@ -1704,6 +2042,30 @@ print("Is not x == y?", not x == y)</code></pre>
         element.style.display = "none";
       }
     }
+    
+    document.getElementById('checkAnswers').addEventListener('click', function() {
+  let correct = 0;
+  const questions = document.querySelectorAll('.card-body');
+
+  questions.forEach(question => {
+    const correctAnswer = question.querySelector('input[correct]');
+    if (correctAnswer && correctAnswer.checked) {
+      correct++;
+    }
+  });
+
+  const resultDiv = document.getElementById('quizResult');
+  resultDiv.textContent = `You got ${correct} out of ${questions.length} correct!`;
+  resultDiv.style.display = 'block';
+
+  if (correct === questions.length) {
+    resultDiv.className = 'alert alert-success';
+  } else if (correct > 0) {
+    resultDiv.className = 'alert alert-warning';
+  } else {
+    resultDiv.className = 'alert alert-danger';
+  }
+});
   </script>
 </body>
 
