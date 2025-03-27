@@ -1,507 +1,564 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI With Python - Complete Learning Path</title>
-    <!-- Bootstrap 5 CDN -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --primary-color: #4e54c8;
-            --secondary-color: #8f94fb;
-            --accent-color: #2575fc;
-        }
-        body {
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI With Python - Complete Learning Path</title>
+  <!-- Bootstrap 5 CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-color: #4e54c8;
+      --secondary-color: #8f94fb;
+      --accent-color: #2575fc;
+    }
+
+    body {
+      background-color: #f8f9fa;
+      color: #212529;
+    }
+
+    .header {
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+      color: white;
+      padding: 3rem 0;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-pills .nav-link.active {
+      background-color: var(--primary-color);
+    }
+
+    .nav-pills .nav-link {
+      color: var(--primary-color);
+    }
+
+    .faq-card,
+    .lesson-card {
+      margin-bottom: 20px;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .faq-card:hover,
+    .lesson-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .faq-question,
+    .lesson-title {
+      font-weight: 600;
+      color: var(--accent-color);
+    }
+
+    .resource-section {
+      background-color: #e9ecef;
+      padding: 2rem;
+      border-radius: 10px;
+      margin-top: 3rem;
+    }
+
+    .highlight {
+      background-color: #fff3cd;
+      padding: 2px 5px;
+      border-radius: 3px;
+      font-weight: 500;
+    }
+
+    .progress-tracker {
+      position: relative;
+      height: 100%;
+      width: 4px;
+      background-color: #dee2e6;
+      margin: 0 auto;
+    }
+
+    .progress-step {
+      position: relative;
+      margin-bottom: 2rem;
+    }
+
+    .step-dot {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: var(--primary-color);
+      border: 4px solid white;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 0;
+      z-index: 2;
+    }
+
+    .step-content {
+      padding: 1rem;
+      margin-left: 2rem;
+      margin-right: 2rem;
+    }
+
+    .badge-ai {
+      background-color: #8f94fb;
+      color: white;
+    }
+
+    .tab-content {
+      padding: 20px 0;
+    }
+
+    .activity-card {
+      border-left: 4px solid var(--accent-color);
+    }
+
+    .assignment-card {
+      border-left: 4px solid #28a745;
+    }
+
+    .project-card {
+      border-left: 4px solid #ffc107;
+    }
+
+    .collapse-btn {
+      color: var(--accent-color);
+      text-decoration: none;
+    }
+
+    .collapse-btn:hover {
+      text-decoration: underline;
+    }
+
+    .resource-card {
+      border-left: 4px solid #20c997;
+    }
+
+    .resource-card .list-group-item {
+      border: none;
+      padding: 8px 0;
+    }
+
+    .resource-card a {
+      color: #0d6efd;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .resource-card a:hover {
+      text-decoration: underline;
+    }
+
+    .resource-card .text-muted {
+      font-size: 0.85rem;
+      margin-top: 2px;
+    }
+
+    .code-block {
+      background: #282c34;
+      color: #abb2bf;
+      padding: 15px;
+    }
+
+    .accordion-button:not(.collapsed) {
+      background-color: grey;
+      color: white;
+    }
+
+    .accordion-button:focus {
+      box-shadow: none;
+      border-color: rgba(0, 0, 0, .125);
+    }
+
+    /*.code-block {
             background-color: #f8f9fa;
-            color: #212529;
-        }
-        .header {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: white;
-            padding: 3rem 0;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        .nav-pills .nav-link.active {
-            background-color: var(--primary-color);
-        }
-        .nav-pills .nav-link {
-            color: var(--primary-color);
-        }
-        .faq-card, .lesson-card {
-            margin-bottom: 20px;
-            border: none;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .faq-card:hover, .lesson-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-        }
-        .faq-question, .lesson-title {
-            font-weight: 600;
-            color: var(--accent-color);
-        }
-        .resource-section {
-            background-color: #e9ecef;
-            padding: 2rem;
-            border-radius: 10px;
-            margin-top: 3rem;
-        }
-        .highlight {
-            background-color: #fff3cd;
-            padding: 2px 5px;
-            border-radius: 3px;
-            font-weight: 500;
-        }
-        .progress-tracker {
-            position: relative;
-            height: 100%;
-            width: 4px;
-            background-color: #dee2e6;
-            margin: 0 auto;
-        }
-        .progress-step {
-            position: relative;
-            margin-bottom: 2rem;
-        }
-        .step-dot {
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background-color: var(--primary-color);
-            border: 4px solid white;
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            top: 0;
-            z-index: 2;
-        }
-        .step-content {
-            padding: 1rem;
-            margin-left: 2rem;
-            margin-right: 2rem;
-        }
-        .badge-ai {
-            background-color: #8f94fb;
-            color: white;
-        }
-        .tab-content {
-            padding: 20px 0;
-        }
-        .activity-card {
-            border-left: 4px solid var(--accent-color);
-        }
-        .assignment-card {
-            border-left: 4px solid #28a745;
-        }
-        .project-card {
-            border-left: 4px solid #ffc107;
-        }
-        .collapse-btn {
-            color: var(--accent-color);
-            text-decoration: none;
-        }
-        .collapse-btn:hover {
-            text-decoration: underline;
-        }
-        .resource-card {
-  border-left: 4px solid #20c997;
-}
-
-.resource-card .list-group-item {
-  border: none;
-  padding: 8px 0;
-}
-
-.resource-card a {
-  color: #0d6efd;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.resource-card a:hover {
-  text-decoration: underline;
-}
-
-.resource-card .text-muted {
-  font-size: 0.85rem;
-  margin-top: 2px;
-}
-
-.code-block {
-            background: #282c34;
-            color: #abb2bf;
             padding: 15px;
-        }
-        .accordion-button:not(.collapsed) {
-            background-color: grey;
-            color: white;
-        }
-        .accordion-button:focus {
-            box-shadow: none;
-            border-color: rgba(0,0,0,.125);
-        }
-    </style>
+            border-radius: 5px;
+            font-family: monospace;
+            margin-bottom: 15px;
+        }*/
+    .activity {
+      background-color: #e9f7ef;
+      padding: 15px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+
+    .quiz-question {
+      background-color: #e7f1ff;
+      padding: 15px;
+      border-radius: 5px;
+      margin-bottom: 15px;
+    }
+  </style>
 </head>
+
 <body>
-    <div class="header text-center">
-        <div class="container">
-            <h1 class="display-4 fw-bold">AI With Python</h1>
-            <p class="lead">Complete Learning Path with Projects & Assignments</p>
-        </div>
-    </div>
-
+  <div class="header text-center">
     <div class="container">
-        <ul class="nav nav-pills mb-4 justify-content-center" id="pills-tab" role="tablist">
-            <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="pills-lessons-tab" data-bs-toggle="pill" data-bs-target="#pills-lessons" type="button" role="tab">Learning Path</button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="pills-faq-tab" data-bs-toggle="pill" data-bs-target="#pills-faq" type="button" role="tab">AI FAQs</button>
-            </li>
-        </ul>
+      <h1 class="display-4 fw-bold">AI With Python</h1>
+      <p class="lead">Complete Learning Path with Projects & Assignments</p>
+    </div>
+  </div>
 
-        <div class="tab-content" id="pills-tabContent">
-            <!-- Python Lessons Tab -->
-            <div class="tab-pane fade show active" id="pills-lessons" role="tabpanel">
-                <div class="row">
-                    <div class="col-lg-10 mx-auto">
-                        <div class="text-center mb-5">
-                            <h2 class="fw-bold mb-3">Python for AI Learning Path</h2>
-                            <p class="lead">Structured journey with hands-on activities and projects</p>
-                        </div>
+  <div class="container">
+    <ul class="nav nav-pills mb-4 justify-content-center" id="pills-tab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="pills-lessons-tab" data-bs-toggle="pill" data-bs-target="#pills-lessons" type="button" role="tab">Learning Path</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="pills-faq-tab" data-bs-toggle="pill" data-bs-target="#pills-faq" type="button" role="tab">AI FAQs</button>
+      </li>
+    </ul>
 
-                        <!-- Beginner Section -->
-                        <div class="progress-step">
-                            <div class="step-dot"></div>
-                            <div class="card lesson-card">
-                                <div class="card-body">
-                                    <div class="d-flex align-items-center mb-3">
-                                        <span class="badge bg-success me-2">Beginner</span>
-                                        <h3 class="lesson-title mb-0">1. Python Fundamentals</h3>
-                                    </div>
-                                    <ul class="list-group list-group-flush mb-3">
-                                        <li class="list-group-item">
-                                            <i class="fas fa-check-circle text-success me-2"></i>
-                                            Variables, data types, and operators
-                                        </li>
-                                          <div class="container py-5">
+    <div class="tab-content" id="pills-tabContent">
+      <!-- Python Lessons Tab -->
+      <div class="tab-pane fade show active" id="pills-lessons" role="tabpanel">
+        <div class="row">
+          <div class="col-lg-10 mx-auto">
+            <div class="text-center mb-5">
+              <h2 class="fw-bold mb-3">Python for AI Learning Path</h2>
+              <p class="lead">Structured journey with hands-on activities and projects</p>
+            </div>
 
-        <!-- Accordion Start -->
-        <div class="accordion" id="pythonTutorialAccordion">
+            <!-- Beginner Section -->
+            <div class="progress-step">
+              <div class="step-dot"></div>
+              <div class="card lesson-card">
+                <div class="card-body">
+                  <div class="d-flex align-items-center mb-3">
+                    <span class="badge bg-success me-2">Beginner</span>
+                    <h3 class="lesson-title mb-0">1. Python Fundamentals</h3>
+                  </div>
+                  <ul class="list-group list-group-flush mb-3">
+                    <li class="list-group-item">
+                      <i class="fas fa-check-circle text-success me-2"></i>
+                      Variables, data types, and operators
+                    </li>
+                    <div class="container py-5">
 
-            <!-- Section 1: Variables -->
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="headingVariables">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseVariables" aria-expanded="true" aria-controls="collapseVariables">
-                        1. Variables in Python
-                    </button>
-                </h2>
-                <div id="collapseVariables" class="accordion-collapse collapse" aria-labelledby="headingVariables" data-bs-parent="#pythonTutorialAccordion">
-                    <div class="accordion-body">
-                        <p>Variables store data in memory and can be referenced by a name.</p>
-                        
-                        <div class="card mb-4">
-                            <div class="card-header bg-dark text-white">
-                                <strong>Syntax:</strong>
-                            </div>
-                            <div class="card-body code-block">
-                                <pre><code>variable_name = value</code></pre>
-                            </div>
-                        </div>
+                      <!-- Accordion Start -->
+                      <div class="accordion" id="pythonTutorialAccordion">
 
-                        <div class="card mb-4">
-                            <div class="card-header bg-dark text-white">
-                                <strong>Example:</strong>
-                            </div>
-                            <div class="card-body code-block">
-                                <pre><code>name = "Alice"
+                        <!-- Section 1: Variables -->
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="headingVariables">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseVariables" aria-expanded="true" aria-controls="collapseVariables">
+                              1. Variables in Python
+                            </button>
+                          </h2>
+                          <div id="collapseVariables" class="accordion-collapse collapse" aria-labelledby="headingVariables" data-bs-parent="#pythonTutorialAccordion">
+                            <div class="accordion-body">
+                              <p>Variables store data in memory and can be referenced by a name.</p>
+
+                              <div class="card mb-4">
+                                <div class="card-header bg-dark text-white">
+                                  <strong>Syntax:</strong>
+                                </div>
+                                <div class="card-body code-block">
+                                  <pre><code>variable_name = value</code></pre>
+                                </div>
+                              </div>
+
+                              <div class="card mb-4">
+                                <div class="card-header bg-dark text-white">
+                                  <strong>Example:</strong>
+                                </div>
+                                <div class="card-body code-block">
+                                  <pre><code>name = "Alice"
 age = 25
 height = 5.6
 is_student = True</code></pre>
+                                </div>
+                              </div>
+
+                              <h4 class="mt-4">Rules for Naming Variables:</h4>
+                              <ul class="list-group mb-4">
+                                <li class="list-group-item">✔ Must start with a letter or <code>_</code></li>
+                                <li class="list-group-item">✔ Can contain letters, numbers, and <code>_</code></li>
+                                <li class="list-group-item">✔ Case-sensitive (<code>age</code> ≠ <code>Age</code>)</li>
+                                <li class="list-group-item">✔ Cannot use Python keywords (<code>if</code>, <code>for</code>, <code>while</code>, etc.)</li>
+                              </ul>
                             </div>
+                          </div>
                         </div>
 
-                        <h4 class="mt-4">Rules for Naming Variables:</h4>
-                        <ul class="list-group mb-4">
-                            <li class="list-group-item">✔ Must start with a letter or <code>_</code></li>
-                            <li class="list-group-item">✔ Can contain letters, numbers, and <code>_</code></li>
-                            <li class="list-group-item">✔ Case-sensitive (<code>age</code> ≠ <code>Age</code>)</li>
-                            <li class="list-group-item">✔ Cannot use Python keywords (<code>if</code>, <code>for</code>, <code>while</code>, etc.)</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+                        <!-- Section 2: Data Types -->
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="headingDataTypes">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDataTypes" aria-expanded="false" aria-controls="collapseDataTypes">
+                              2. Data Types in Python
+                            </button>
+                          </h2>
+                          <div id="collapseDataTypes" class="accordion-collapse collapse" aria-labelledby="headingDataTypes" data-bs-parent="#pythonTutorialAccordion">
+                            <div class="accordion-body">
+                              <p>Python has several built-in data types:</p>
 
-            <!-- Section 2: Data Types -->
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="headingDataTypes">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDataTypes" aria-expanded="false" aria-controls="collapseDataTypes">
-                        2. Data Types in Python
-                    </button>
-                </h2>
-                <div id="collapseDataTypes" class="accordion-collapse collapse" aria-labelledby="headingDataTypes" data-bs-parent="#pythonTutorialAccordion">
-                    <div class="accordion-body">
-                        <p>Python has several built-in data types:</p>
+                              <div class="table-responsive mb-4">
+                                <table class="table table-striped table-bordered">
+                                  <thead class="table-dark">
+                                    <tr>
+                                      <th>Data Type</th>
+                                      <th>Example</th>
+                                      <th>Description</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td><code>int</code></td>
+                                      <td><code>5</code>, <code>-3</code>, <code>1000</code></td>
+                                      <td>Whole numbers</td>
+                                    </tr>
+                                    <tr>
+                                      <td><code>float</code></td>
+                                      <td><code>3.14</code>, <code>-0.5</code>, <code>2.0</code></td>
+                                      <td>Decimal numbers</td>
+                                    </tr>
+                                    <tr>
+                                      <td><code>str</code></td>
+                                      <td><code>"Hello"</code>, <code>'Python'</code></td>
+                                      <td>Text (strings)</td>
+                                    </tr>
+                                    <tr>
+                                      <td><code>bool</code></td>
+                                      <td><code>True</code>, <code>False</code></td>
+                                      <td>Boolean values</td>
+                                    </tr>
+                                    <tr>
+                                      <td><code>list</code></td>
+                                      <td><code>[1, 2, 3]</code>, <code>["a", "b"]</code></td>
+                                      <td>Ordered, mutable collection</td>
+                                    </tr>
+                                    <tr>
+                                      <td><code>tuple</code></td>
+                                      <td><code>(1, 2, 3)</code>, <code>("a", "b")</code></td>
+                                      <td>Ordered, immutable collection</td>
+                                    </tr>
+                                    <tr>
+                                      <td><code>dict</code></td>
+                                      <td><code>{"name": "Alice", "age": 25}</code></td>
+                                      <td>Key-value pairs</td>
+                                    </tr>
+                                    <tr>
+                                      <td><code>set</code></td>
+                                      <td><code>{1, 2, 3}</code>, <code>{"a", "b"}</code></td>
+                                      <td>Unordered, unique elements</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
 
-                        <div class="table-responsive mb-4">
-                            <table class="table table-striped table-bordered">
-                                <thead class="table-dark">
-                                    <tr>
-                                        <th>Data Type</th>
-                                        <th>Example</th>
-                                        <th>Description</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><code>int</code></td>
-                                        <td><code>5</code>, <code>-3</code>, <code>1000</code></td>
-                                        <td>Whole numbers</td>
-                                    </tr>
-                                    <tr>
-                                        <td><code>float</code></td>
-                                        <td><code>3.14</code>, <code>-0.5</code>, <code>2.0</code></td>
-                                        <td>Decimal numbers</td>
-                                    </tr>
-                                    <tr>
-                                        <td><code>str</code></td>
-                                        <td><code>"Hello"</code>, <code>'Python'</code></td>
-                                        <td>Text (strings)</td>
-                                    </tr>
-                                    <tr>
-                                        <td><code>bool</code></td>
-                                        <td><code>True</code>, <code>False</code></td>
-                                        <td>Boolean values</td>
-                                    </tr>
-                                    <tr>
-                                        <td><code>list</code></td>
-                                        <td><code>[1, 2, 3]</code>, <code>["a", "b"]</code></td>
-                                        <td>Ordered, mutable collection</td>
-                                    </tr>
-                                    <tr>
-                                        <td><code>tuple</code></td>
-                                        <td><code>(1, 2, 3)</code>, <code>("a", "b")</code></td>
-                                        <td>Ordered, immutable collection</td>
-                                    </tr>
-                                    <tr>
-                                        <td><code>dict</code></td>
-                                        <td><code>{"name": "Alice", "age": 25}</code></td>
-                                        <td>Key-value pairs</td>
-                                    </tr>
-                                    <tr>
-                                        <td><code>set</code></td>
-                                        <td><code>{1, 2, 3}</code>, <code>{"a", "b"}</code></td>
-                                        <td>Unordered, unique elements</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <h4>Checking Data Type:</h4>
-                        <p>Use <code>type()</code> function:</p>
-                        <div class="card mb-4">
-                            <div class="card-body code-block">
-                                <pre><code>print(type(10))        # &lt;class 'int'&gt;
+                              <h4>Checking Data Type:</h4>
+                              <p>Use <code>type()</code> function:</p>
+                              <div class="card mb-4">
+                                <div class="card-body code-block">
+                                  <pre><code>print(type(10))        # &lt;class 'int'&gt;
 print(type(3.14))      # &lt;class 'float'&gt;
 print(type("Hello"))   # &lt;class 'str'&gt;
 print(type(True))      # &lt;class 'bool'&gt;</code></pre>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Section 3: Operators -->
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="headingOperators">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOperators" aria-expanded="false" aria-controls="collapseOperators">
-                        3. Operators in Python
-                    </button>
-                </h2>
-                <div id="collapseOperators" class="accordion-collapse collapse" aria-labelledby="headingOperators" data-bs-parent="#pythonTutorialAccordion">
-                    <div class="accordion-body">
-                        <p>Operators perform operations on variables and values.</p>
-
-                        <h4 class="mt-4">Arithmetic Operators</h4>
-                        <div class="table-responsive mb-4">
-                            <table class="table table-striped table-bordered">
-                                <thead class="table-dark">
-                                    <tr>
-                                        <th>Operator</th>
-                                        <th>Example</th>
-                                        <th>Description</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><code>+</code></td>
-                                        <td><code>5 + 3 → 8</code></td>
-                                        <td>Addition</td>
-                                    </tr>
-                                    <tr>
-                                        <td><code>-</code></td>
-                                        <td><code>5 - 3 → 2</code></td>
-                                        <td>Subtraction</td>
-                                    </tr>
-                                    <tr>
-                                        <td><code>*</code></td>
-                                        <td><code>5 * 3 → 15</code></td>
-                                        <td>Multiplication</td>
-                                    </tr>
-                                    <tr>
-                                        <td><code>/</code></td>
-                                        <td><code>10 / 2 → 5.0</code></td>
-                                        <td>Division (float result)</td>
-                                    </tr>
-                                    <tr>
-                                        <td><code>//</code></td>
-                                        <td><code>10 // 3 → 3</code></td>
-                                        <td>Floor division (int result)</td>
-                                    </tr>
-                                    <tr>
-                                        <td><code>%</code></td>
-                                        <td><code>10 % 3 → 1</code></td>
-                                        <td>Modulus (remainder)</td>
-                                    </tr>
-                                    <tr>
-                                        <td><code>**</code></td>
-                                        <td><code>2 ** 3 → 8</code></td>
-                                        <td>Exponentiation</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <h4>Comparison Operators</h4>
-                                <div class="table-responsive mb-4">
-                                    <table class="table table-striped table-bordered">
-                                        <thead class="table-dark">
-                                            <tr>
-                                                <th>Operator</th>
-                                                <th>Example</th>
-                                                <th>Description</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td><code>==</code></td>
-                                                <td><code>5 == 5 → True</code></td>
-                                                <td>Equal to</td>
-                                            </tr>
-                                            <tr>
-                                                <td><code>!=</code></td>
-                                                <td><code>5 != 3 → True</code></td>
-                                                <td>Not equal</td>
-                                            </tr>
-                                            <tr>
-                                                <td><code>></code></td>
-                                                <td><code>5 > 3 → True</code></td>
-                                                <td>Greater than</td>
-                                            </tr>
-                                            <tr>
-                                                <td><code><</code></td>
-                                                <td><code>5 < 3 → False</code></td>
-                                                <td>Less than</td>
-                                            </tr>
-                                            <tr>
-                                                <td><code>>=</code></td>
-                                                <td><code>5 >= 5 → True</code></td>
-                                                <td>Greater than or equal</td>
-                                            </tr>
-                                            <tr>
-                                                <td><code><=</code></td>
-                                                <td><code>5 <= 3 → False</code></td>
-                                                <td>Less than or equal</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
                                 </div>
+                              </div>
                             </div>
-                            <div class="col-md-6">
-                                <h4>Logical Operators</h4>
-                                <div class="table-responsive mb-4">
-                                    <table class="table table-striped table-bordered">
-                                        <thead class="table-dark">
-                                            <tr>
-                                                <th>Operator</th>
-                                                <th>Example</th>
-                                                <th>Description</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td><code>and</code></td>
-                                                <td><code>(5 > 3) and (2 < 4) → True</code></td>
-                                                <td>Both conditions must be True</td>
-                                            </tr>
-                                            <tr>
-                                                <td><code>or</code></td>
-                                                <td><code>(5 > 3) or (2 > 4) → True</code></td>
-                                                <td>At least one condition must be True</td>
-                                            </tr>
-                                            <tr>
-                                                <td><code>not</code></td>
-                                                <td><code>not (5 < 3) → True</code></td>
-                                                <td>Reverses the condition</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
+                          </div>
                         </div>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Section 4: Hands-on Activities -->
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="headingActivities">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseActivities" aria-expanded="false" aria-controls="collapseActivities">
-                        🔹 Hands-on Activities
-                    </button>
-                </h2>
-                <div id="collapseActivities" class="accordion-collapse collapse" aria-labelledby="headingActivities" data-bs-parent="#pythonTutorialAccordion">
-                    <div class="accordion-body">
-                        <div class="card mb-4">
-                            <div class="card-header bg-primary text-white">
-                                <strong>Activity 1: Variable Practice</strong>
+                        <!-- Section 3: Operators -->
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="headingOperators">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOperators" aria-expanded="false" aria-controls="collapseOperators">
+                              3. Operators in Python
+                            </button>
+                          </h2>
+                          <div id="collapseOperators" class="accordion-collapse collapse" aria-labelledby="headingOperators" data-bs-parent="#pythonTutorialAccordion">
+                            <div class="accordion-body">
+                              <p>Operators perform operations on variables and values.</p>
+
+                              <h4 class="mt-4">Arithmetic Operators</h4>
+                              <div class="table-responsive mb-4">
+                                <table class="table table-striped table-bordered">
+                                  <thead class="table-dark">
+                                    <tr>
+                                      <th>Operator</th>
+                                      <th>Example</th>
+                                      <th>Description</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td><code>+</code></td>
+                                      <td><code>5 + 3 → 8</code></td>
+                                      <td>Addition</td>
+                                    </tr>
+                                    <tr>
+                                      <td><code>-</code></td>
+                                      <td><code>5 - 3 → 2</code></td>
+                                      <td>Subtraction</td>
+                                    </tr>
+                                    <tr>
+                                      <td><code>*</code></td>
+                                      <td><code>5 * 3 → 15</code></td>
+                                      <td>Multiplication</td>
+                                    </tr>
+                                    <tr>
+                                      <td><code>/</code></td>
+                                      <td><code>10 / 2 → 5.0</code></td>
+                                      <td>Division (float result)</td>
+                                    </tr>
+                                    <tr>
+                                      <td><code>//</code></td>
+                                      <td><code>10 // 3 → 3</code></td>
+                                      <td>Floor division (int result)</td>
+                                    </tr>
+                                    <tr>
+                                      <td><code>%</code></td>
+                                      <td><code>10 % 3 → 1</code></td>
+                                      <td>Modulus (remainder)</td>
+                                    </tr>
+                                    <tr>
+                                      <td><code>**</code></td>
+                                      <td><code>2 ** 3 → 8</code></td>
+                                      <td>Exponentiation</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+
+                              <div class="row">
+                                <div class="col-md-6">
+                                  <h4>Comparison Operators</h4>
+                                  <div class="table-responsive mb-4">
+                                    <table class="table table-striped table-bordered">
+                                      <thead class="table-dark">
+                                        <tr>
+                                          <th>Operator</th>
+                                          <th>Example</th>
+                                          <th>Description</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        <tr>
+                                          <td><code>==</code></td>
+                                          <td><code>5 == 5 → True</code></td>
+                                          <td>Equal to</td>
+                                        </tr>
+                                        <tr>
+                                          <td><code>!=</code></td>
+                                          <td><code>5 != 3 → True</code></td>
+                                          <td>Not equal</td>
+                                        </tr>
+                                        <tr>
+                                          <td><code>></code></td>
+                                          <td><code>5 > 3 → True</code></td>
+                                          <td>Greater than</td>
+                                        </tr>
+                                        <tr>
+                                          <td><code>
+                                              << /code>
+                                          </td>
+                                          <td><code>5 < 3 → False</code>
+                                          </td>
+                                          <td>Less than</td>
+                                        </tr>
+                                        <tr>
+                                          <td><code>>=</code></td>
+                                          <td><code>5 >= 5 → True</code></td>
+                                          <td>Greater than or equal</td>
+                                        </tr>
+                                        <tr>
+                                          <td><code>
+                                              <=< /code>
+                                          </td>
+                                          <td><code>5 <= 3 → False</code>
+                                          </td>
+                                          <td>Less than or equal</td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </div>
+                                </div>
+                                <div class="col-md-6">
+                                  <h4>Logical Operators</h4>
+                                  <div class="table-responsive mb-4">
+                                    <table class="table table-striped table-bordered">
+                                      <thead class="table-dark">
+                                        <tr>
+                                          <th>Operator</th>
+                                          <th>Example</th>
+                                          <th>Description</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        <tr>
+                                          <td><code>and</code></td>
+                                          <td><code>(5 > 3) and (2 < 4) → True</code>
+                                          </td>
+                                          <td>Both conditions must be True</td>
+                                        </tr>
+                                        <tr>
+                                          <td><code>or</code></td>
+                                          <td><code>(5 > 3) or (2 > 4) → True</code></td>
+                                          <td>At least one condition must be True</td>
+                                        </tr>
+                                        <tr>
+                                          <td><code>not</code></td>
+                                          <td><code>not (5 < 3) → True</code>
+                                          </td>
+                                          <td>Reverses the condition</td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </div>
+                                </div>
+                              </div>
                             </div>
-                            <div class="card-body code-block">
-                                <pre><code># Task: Store your name, age, and favorite color in variables and print them.
+                          </div>
+                        </div>
+
+                        <!-- Section 4: Hands-on Activities -->
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="headingActivities">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseActivities" aria-expanded="false" aria-controls="collapseActivities">
+                              🔹 Hands-on Activities
+                            </button>
+                          </h2>
+                          <div id="collapseActivities" class="accordion-collapse collapse" aria-labelledby="headingActivities" data-bs-parent="#pythonTutorialAccordion">
+                            <div class="accordion-body">
+                              <div class="card mb-4">
+                                <div class="card-header bg-primary text-white">
+                                  <strong>Activity 1: Variable Practice</strong>
+                                </div>
+                                <div class="card-body code-block">
+                                  <pre><code># Task: Store your name, age, and favorite color in variables and print them.
 name = "Your Name"
 age = 20
 favorite_color = "Purple"
 print(f"Name: {name}, Age: {age}, Favorite Color: {favorite_color}")</code></pre>
-                            </div>
-                        </div>
+                                </div>
+                              </div>
 
-                        <div class="card mb-4">
-                            <div class="card-header bg-primary text-white">
-                                <strong>Activity 2: Data Type Check</strong>
-                            </div>
-                            <div class="card-body code-block">
-                                <pre><code># Task: Check the data types of different values.
+                              <div class="card mb-4">
+                                <div class="card-header bg-primary text-white">
+                                  <strong>Activity 2: Data Type Check</strong>
+                                </div>
+                                <div class="card-body code-block">
+                                  <pre><code># Task: Check the data types of different values.
 print(type(100))  
 print(type(3.14))  
 print(type("Python"))  
 print(type(True))</code></pre>
-                            </div>
-                        </div>
+                                </div>
+                              </div>
 
-                        <div class="card mb-4">
-                            <div class="card-header bg-primary text-white">
-                                <strong>Activity 3: Simple Calculator</strong>
-                            </div>
-                            <div class="card-body code-block">
-                                <pre><code># Task: Perform arithmetic operations on two numbers.
+                              <div class="card mb-4">
+                                <div class="card-header bg-primary text-white">
+                                  <strong>Activity 3: Simple Calculator</strong>
+                                </div>
+                                <div class="card-body code-block">
+                                  <pre><code># Task: Perform arithmetic operations on two numbers.
 num1 = 10
 num2 = 5
 print("Addition:", num1 + num2)
@@ -510,896 +567,1144 @@ print("Multiplication:", num1 * num2)
 print("Division:", num1 / num2)
 print("Floor Division:", num1 // num2)
 print("Exponentiation:", num1 ** num2)</code></pre>
-                            </div>
-                        </div>
+                                </div>
+                              </div>
 
-                        <div class="card mb-4">
-                            <div class="card-header bg-primary text-white">
-                                <strong>Activity 4: Temperature Converter</strong>
-                            </div>
-                            <div class="card-body code-block">
-                                <pre><code># Task: Convert Celsius to Fahrenheit.
+                              <div class="card mb-4">
+                                <div class="card-header bg-primary text-white">
+                                  <strong>Activity 4: Temperature Converter</strong>
+                                </div>
+                                <div class="card-body code-block">
+                                  <pre><code># Task: Convert Celsius to Fahrenheit.
 celsius = 25
 fahrenheit = (celsius * 9/5) + 32
 print(f"{celsius}°C = {fahrenheit}°F")</code></pre>
-                            </div>
-                        </div>
+                                </div>
+                              </div>
 
-                        <div class="card mb-4">
-                            <div class="card-header bg-primary text-white">
-                                <strong>Activity 5: User Input & Operations</strong>
-                            </div>
-                            <div class="card-body code-block">
-                                <pre><code># Task: Ask the user for two numbers and perform operations.
+                              <div class="card mb-4">
+                                <div class="card-header bg-primary text-white">
+                                  <strong>Activity 5: User Input & Operations</strong>
+                                </div>
+                                <div class="card-body code-block">
+                                  <pre><code># Task: Ask the user for two numbers and perform operations.
 num1 = float(input("Enter first number: "))
 num2 = float(input("Enter second number: "))
 print("Sum:", num1 + num2)
 print("Difference:", num1 - num2)
 print("Product:", num1 * num2)</code></pre>
-                            </div>
-                        </div>
+                                </div>
+                              </div>
 
-                        <div class="card mb-4">
-                            <div class="card-header bg-primary text-white">
-                                <strong>Activity 6: Boolean Logic Challenge</strong>
-                            </div>
-                            <div class="card-body code-block">
-                                <pre><code># Task: Evaluate logical expressions.
+                              <div class="card mb-4">
+                                <div class="card-header bg-primary text-white">
+                                  <strong>Activity 6: Boolean Logic Challenge</strong>
+                                </div>
+                                <div class="card-body code-block">
+                                  <pre><code># Task: Evaluate logical expressions.
 x = 10
 y = 20
 print("Is x > 5 and y < 30?", x > 5 and y < 30)
 print("Is x == 10 or y == 15?", x == 10 or y == 15)
 print("Is not x == y?", not x == y)</code></pre>
+                                </div>
+                              </div>
                             </div>
+                          </div>
                         </div>
+
+                        <!-- Section 5: Summary -->
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="headingSummary">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSummary" aria-expanded="false" aria-controls="collapseSummary">
+                              🎯 Summary
+                            </button>
+                          </h2>
+                          <div id="collapseSummary" class="accordion-collapse collapse" aria-labelledby="headingSummary" data-bs-parent="#pythonTutorialAccordion">
+                            <div class="accordion-body">
+                              <ul>
+                                <li>✅ <strong>Variables</strong> store data in named containers.</li>
+                                <li>✅ <strong>Data Types</strong> define the kind of data (int, float, str, bool, etc.).</li>
+                                <li>✅ <strong>Operators</strong> perform arithmetic, comparison, and logical operations.</li>
+                              </ul>
+                              <p class="mb-0">Now, try the activities and experiment with different values! 🚀</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Accordion End -->
                     </div>
-                </div>
-            </div>
 
-            <!-- Section 5: Summary -->
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="headingSummary">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSummary" aria-expanded="false" aria-controls="collapseSummary">
-                        🎯 Summary
-                    </button>
-                </h2>
-                <div id="collapseSummary" class="accordion-collapse collapse" aria-labelledby="headingSummary" data-bs-parent="#pythonTutorialAccordion">
-                    <div class="accordion-body">
-                        <ul>
-                            <li>✅ <strong>Variables</strong> store data in named containers.</li>
-                            <li>✅ <strong>Data Types</strong> define the kind of data (int, float, str, bool, etc.).</li>
-                            <li>✅ <strong>Operators</strong> perform arithmetic, comparison, and logical operations.</li>
-                        </ul>
-                        <p class="mb-0">Now, try the activities and experiment with different values! 🚀</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Accordion End -->
-    </div>
+                    <li class="list-group-item">
+                      <i class="fas fa-check-circle text-success me-2"></i>
+                      Control flow (if-else, loops)
+                    </li>
+                    <div class="container mt-5">
+                    
 
-                                        <li class="list-group-item">
-                                            <i class="fas fa-check-circle text-success me-2"></i>
-                                            Control flow (if-else, loops)
-                                        </li>
-                                        <li class="list-group-item">
-                                            <i class="fas fa-check-circle text-success me-2"></i>
-                                            Functions and modules
-                                        </li>
-                                        <li class="list-group-item">
-                                            <i class="fas fa-check-circle text-success me-2"></i>
-                                            File handling and exceptions
-                                        </li>
-                                    </ul>
-                                    <!-- Beginner Section Resources -->
-<div class="accordion mb-3" id="beginnerResources">
-  <div class="card resource-card mb-2">
-    <div class="card-header" id="beginnerResourcesHeading">
-      <h5 class="mb-0">
-        <button class="btn btn-link collapse-btn" type="button" data-bs-toggle="collapse" 
-                data-bs-target="#beginnerResourcesCollapse" aria-expanded="false" 
-                aria-controls="beginnerResourcesCollapse">
-          <i class="fas fa-external-link-alt me-2"></i>Additional Resources
-        </button>
-      </h5>
-    </div>
-    <div id="beginnerResourcesCollapse" class="collapse" aria-labelledby="beginnerResourcesHeading" 
-         data-parent="#beginnerResources">
-      <div class="card-body">
-        <h5>Python Fundamentals Resources</h5>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">
-            <a href="https://docs.python.org/3/tutorial/" target="_blank">Python Official Documentation</a>
-            <span class="text-muted d-block small">Complete Python tutorial from the creators</span>
-          </li>
-          <li class="list-group-item">
-            <a href="https://www.learnpython.org/" target="_blank">LearnPython.org</a>
-            <span class="text-muted d-block small">Interactive Python tutorial</span>
-          </li>
-          <li class="list-group-item">
-            <a href="https://realpython.com/start-here/" target="_blank">Real Python Tutorials</a>
-            <span class="text-muted d-block small">Practical Python tutorials for beginners</span>
-          </li>
-          <li class="list-group-item">
-            <a href="https://www.codecademy.com/learn/learn-python-3" target="_blank">Codecademy Python Course</a>
-            <span class="text-muted d-block small">Interactive coding exercises</span>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
-                                    
-                                    <!-- Activities Accordion -->
-                                    <div class="accordion mb-3" id="beginnerActivities">
-                                        <div class="card activity-card mb-2">
-                                            <div class="card-header" id="beginnerActivitiesHeading">
-                                                <h5 class="mb-0">
-                                                    <button class="btn btn-link collapse-btn" type="button" data-bs-toggle="collapse" data-bs-target="#beginnerActivitiesCollapse">
-                                                        <i class="fas fa-tasks me-2"></i>Hands-on Activities
-                                                    </button>
-                                                </h5>
-                                            </div>
-                                            <div id="beginnerActivitiesCollapse" class="collapse" aria-labelledby="beginnerActivitiesHeading" data-parent="#beginnerActivities">
-                                                <div class="card-body">
-                                                    <ul class="list-group list-group-flush">
-                                                        <li class="list-group-item">
-                                                            <strong>Calculator App:</strong> Build a console calculator that can perform basic arithmetic operations
-                                                        </li>
-                                                        <li class="list-group-item">
-                                                            <strong>Number Guessing Game:</strong> Program where the computer randomly selects a number and the user tries to guess it
-                                                        </li>
-                                                        <li class="list-group-item">
-                                                            <strong>Text Analyzer:</strong> Count words, characters, and vowels in a text file
-                                                        </li>
-                                                        <li class="list-group-item">
-                                                            <strong>Temperature Converter:</strong> Convert between Celsius and Fahrenheit
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- Assignments Accordion -->
-                                    <div class="accordion mb-3" id="beginnerAssignments">
-                                        <div class="card assignment-card mb-2">
-                                            <div class="card-header" id="beginnerAssignmentsHeading">
-                                                <h5 class="mb-0">
-                                                    <button class="btn btn-link collapse-btn" type="button" data-bs-toggle="collapse" data-bs-target="#beginnerAssignmentsCollapse">
-                                                        <i class="fas fa-clipboard-check me-2"></i>Assignments
-                                                    </button>
-                                                </h5>
-                                            </div>
-                                            <div id="beginnerAssignmentsCollapse" class="collapse" aria-labelledby="beginnerAssignmentsHeading" data-parent="#beginnerAssignments">
-                                                <div class="card-body">
-                                                    <ul class="list-group list-group-flush">
-                                                        <li class="list-group-item">
-                                                            <strong>To-Do List:</strong> Create a command-line to-do list application with add, delete, and view functionality
-                                                        </li>
-                                                        <li class="list-group-item">
-                                                            <strong>Contact Book:</strong> Build a contact management system that stores names, emails, and phone numbers
-                                                        </li>
-                                                        <li class="list-group-item">
-                                                            <strong>Quiz Game:</strong> Develop a multiple-choice quiz that tracks scores
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- Project -->
-                                    <div class="accordion" id="beginnerProject">
-                                        <div class="card project-card">
-                                            <div class="card-header" id="beginnerProjectHeading">
-                                                <h5 class="mb-0">
-                                                    <button class="btn btn-link collapse-btn" type="button" data-bs-toggle="collapse" data-bs-target="#beginnerProjectCollapse">
-                                                        <i class="fas fa-project-diagram me-2"></i>Capstone Project
-                                                    </button>
-                                                </h5>
-                                            </div>
-                                            <div id="beginnerProjectCollapse" class="collapse" aria-labelledby="beginnerProjectHeading" data-parent="#beginnerProject">
-                                                <div class="card-body">
-                                                    <h5>Bank Account System</h5>
-                                                    <p>Create a Python program that simulates a basic banking system with the following features:</p>
-                                                    <ul>
-                                                        <li>Create accounts with account numbers and balances</li>
-                                                        <li>Deposit and withdraw funds with validation</li>
-                                                        <li>View account details and transaction history</li>
-                                                        <li>Save account data to a file</li>
-                                                    </ul>
-                                                    <div class="alert alert-info">
-                                                        <strong>Learning Outcomes:</strong> File I/O, data structures, control flow, error handling
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="d-flex justify-content-between align-items-center mt-3">
-                                        <span class="text-muted">Estimated time: 2-3 weeks</span>
-                                        <a href="#" class="btn btn-sm btn-outline-primary">Start Learning</a>
-                                    </div>
-                                </div>
-                            </div>
+                      <!-- Introduction -->
+                      <div class="card mb-4">
+                        
+                        <div class="card-body">
+                          <p>Control flow refers to the order in which statements are executed in a program. Python uses conditional statements and loops to control program flow.</p>
                         </div>
+                      </div>
 
-                        <!-- Intermediate Section -->
-                        <div class="progress-step">
-                            <div class="step-dot"></div>
-                            <div class="card lesson-card">
-                                <div class="card-body">
-                                    <div class="d-flex align-items-center mb-3">
-                                        <span class="badge bg-warning text-dark me-2">Intermediate</span>
-                                        <h3 class="lesson-title mb-0">2. Python for Data Science</h3>
-                                    </div>
-                                    <ul class="list-group list-group-flush mb-3">
-                                        <li class="list-group-item">
-                                            <i class="fas fa-check-circle text-success me-2"></i>
-                                            NumPy for numerical computing
-                                        </li>
-                                        <li class="list-group-item">
-                                            <i class="fas fa-check-circle text-success me-2"></i>
-                                            Pandas for data manipulation
-                                        </li>
-                                        <li class="list-group-item">
-                                            <i class="fas fa-check-circle text-success me-2"></i>
-                                            Matplotlib/Seaborn for visualization
-                                        </li>
-                                        <li class="list-group-item">
-                                            <i class="fas fa-check-circle text-success me-2"></i>
-                                            Data cleaning and preprocessing
-                                        </li>
-                                    </ul>
-                                    <!-- Intermediate Section 
-                                    
-                                    <!-- Activities Accordion --><div class="accordion mb-3" id="intermediateResources">
-  <div class="card resource-card mb-2">
-    <div class="card-header" id="intermediateResourcesHeading">
-      <h5 class="mb-0">
-        <button class="btn btn-link collapse-btn" type="button" data-bs-toggle="collapse" 
-                data-bs-target="#intermediateResourcesCollapse" aria-expanded="false" 
-                aria-controls="intermediateResourcesCollapse">
-          <i class="fas fa-external-link-alt me-2"></i>Additional Resources
-        </button>
-      </h5>
-    </div>
-    <div id="intermediateResourcesCollapse" class="collapse" aria-labelledby="intermediateResourcesHeading" 
-         data-parent="#intermediateResources">
-      <div class="card-body">
-        <h5>Data Science Resources</h5>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">
-            <a href="https://numpy.org/doc/stable/user/quickstart.html" target="_blank">NumPy Quickstart</a>
-            <span class="text-muted d-block small">Official NumPy tutorial</span>
-          </li>
-          <li class="list-group-item">
-            <a href="https://pandas.pydata.org/docs/getting_started/intro_tutorials/index.html" target="_blank">Pandas Tutorials</a>
-            <span class="text-muted d-block small">Official Pandas learning resources</span>
-          </li>
-          <li class="list-group-item">
-            <a href="https://seaborn.pydata.org/tutorial.html" target="_blank">Seaborn Tutorial</a>
-            <span class="text-muted d-block small">Statistical data visualization guide</span>
-          </li>
-          <li class="list-group-item">
-            <a href="https://www.datacamp.com/courses/intro-to-python-for-data-science" target="_blank">DataCamp Python for Data Science</a>
-            <span class="text-muted d-block small">Interactive data science course</span>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
-                                    <div class="accordion mb-3" id="intermediateActivities">
-                                        <div class="card activity-card mb-2">
-                                            <div class="card-header" id="intermediateActivitiesHeading">
-                                                <h5 class="mb-0">
-                                                    <button class="btn btn-link collapse-btn" type="button" data-bs-toggle="collapse" data-bs-target="#intermediateActivitiesCollapse">
-                                                        <i class="fas fa-tasks me-2"></i>Hands-on Activities
-                                                    </button>
-                                                </h5>
-                                            </div>
-                                            <div id="intermediateActivitiesCollapse" class="collapse" aria-labelledby="intermediateActivitiesHeading" data-parent="#intermediateActivities">
-                                                <div class="card-body">
-                                                    <ul class="list-group list-group-flush">
-                                                        <li class="list-group-item">
-                                                            <strong>Data Exploration:</strong> Analyze a dataset of your choice using Pandas
-                                                        </li>
-                                                        <li class="list-group-item">
-                                                            <strong>Visualization Challenge:</strong> Create 5 different chart types from the same dataset
-                                                        </li>
-                                                        <li class="list-group-item">
-                                                            <strong>Data Cleaning:</strong> Handle missing values and outliers in a messy dataset
-                                                        </li>
-                                                        <li class="list-group-item">
-                                                            <strong>NumPy Operations:</strong> Implement matrix operations without using loops
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- Assignments Accordion -->
-                                    <div class="accordion mb-3" id="intermediateAssignments">
-                                        <div class="card assignment-card mb-2">
-                                            <div class="card-header" id="intermediateAssignmentsHeading">
-                                                <h5 class="mb-0">
-                                                    <button class="btn btn-link collapse-btn" type="button" data-bs-toggle="collapse" data-bs-target="#intermediateAssignmentsCollapse">
-                                                        <i class="fas fa-clipboard-check me-2"></i>Assignments
-                                                    </button>
-                                                </h5>
-                                            </div>
-                                            <div id="intermediateAssignmentsCollapse" class="collapse" aria-labelledby="intermediateAssignmentsHeading" data-parent="#intermediateAssignments">
-                                                <div class="card-body">
-                                                    <ul class="list-group list-group-flush">
-                                                        <li class="list-group-item">
-                                                            <strong>COVID-19 Analysis:</strong> Analyze trends in COVID-19 data using Pandas and visualize results
-                                                        </li>
-                                                        <li class="list-group-item">
-                                                            <strong>Stock Market:</strong> Calculate moving averages and other indicators from stock data
-                                                        </li>
-                                                        <li class="list-group-item">
-                                                            <strong>Data Pipeline:</strong> Build an ETL pipeline that cleans and transforms raw data
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- Project -->
-                                    <div class="accordion" id="intermediateProject">
-                                        <div class="card project-card">
-                                            <div class="card-header" id="intermediateProjectHeading">
-                                                <h5 class="mb-0">
-                                                    <button class="btn btn-link collapse-btn" type="button" data-bs-toggle="collapse" data-bs-target="#intermediateProjectCollapse">
-                                                        <i class="fas fa-project-diagram me-2"></i>Capstone Project
-                                                    </button>
-                                                </h5>
-                                            </div>
-                                            <div id="intermediateProjectCollapse" class="collapse" aria-labelledby="intermediateProjectHeading" data-parent="#intermediateProject">
-                                                <div class="card-body">
-                                                    <h5>Exploratory Data Analysis (EDA) Dashboard</h5>
-                                                    <p>Create a Jupyter Notebook that performs comprehensive EDA on a dataset of your choice:</p>
-                                                    <ul>
-                                                        <li>Load and clean the dataset</li>
-                                                        <li>Perform statistical analysis</li>
-                                                        <li>Create visualizations to reveal insights</li>
-                                                        <li>Write a summary of your findings</li>
-                                                    </ul>
-                                                    <div class="alert alert-info">
-                                                        <strong>Learning Outcomes:</strong> Data wrangling, visualization, statistical analysis, storytelling with data
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="d-flex justify-content-between align-items-center mt-3">
-                                        <span class="text-muted">Estimated time: 3-4 weeks</span>
-                                        <a href="#" class="btn btn-sm btn-outline-primary">Start Learning</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                      <!-- If-Else Section -->
+                      <div class="accordion mb-4" id="ifElseAccordion">
+                        <div class="accordion-item">
+                          <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                              Conditional Statements (if-elif-else)
+                            </button>
+                          </h2>
+                          <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#ifElseAccordion">
+                            <div class="accordion-body">
+                              <h4>Basic if statement</h4>
+                              <div class="code-block">
+                                if condition:<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;# code to execute if condition is True
+                              </div>
 
-                        <!-- Advanced Section -->
-                        <div class="progress-step">
-                            <div class="step-dot"></div>
-                            <div class="card lesson-card">
-                                <div class="card-body">
-                                    <div class="d-flex align-items-center mb-3">
-                                        <span class="badge bg-danger me-2">Advanced</span>
-                                        <h3 class="lesson-title mb-0">3. Machine Learning with Python</h3>
-                                    </div>
-                                    <ul class="list-group list-group-flush mb-3">
-                                        <li class="list-group-item">
-                                            <i class="fas fa-check-circle text-success me-2"></i>
-                                            Scikit-learn for ML algorithms
-                                        </li>
-                                        <li class="list-group-item">
-                                            <i class="fas fa-check-circle text-success me-2"></i>
-                                            Supervised vs unsupervised learning
-                                        </li>
-                                        <li class="list-group-item">
-                                            <i class="fas fa-check-circle text-success me-2"></i>
-                                            Model evaluation and validation
-                                        </li>
-                                        <li class="list-group-item">
-                                            <i class="fas fa-check-circle text-success me-2"></i>
-                                            Feature engineering techniques
-                                        </li>
-                                    </ul><!-- Advanced Section Resources -->
-<div class="accordion mb-3" id="advancedResources">
-  <div class="card resource-card mb-2">
-    <div class="card-header" id="advancedResourcesHeading">
-      <h5 class="mb-0">
-        <button class="btn btn-link collapse-btn" type="button" data-bs-toggle="collapse" 
-                data-bs-target="#advancedResourcesCollapse" aria-expanded="false" 
-                aria-controls="advancedResourcesCollapse">
-          <i class="fas fa-external-link-alt me-2"></i>Additional Resources
-        </button>
-      </h5>
-    </div>
-    <div id="advancedResourcesCollapse" class="collapse" aria-labelledby="advancedResourcesHeading" 
-         data-parent="#advancedResources">
-      <div class="card-body">
-        <h5>Machine Learning Resources</h5>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">
-            <a href="https://scikit-learn.org/stable/tutorial/index.html" target="_blank">scikit-learn Tutorials</a>
-            <span class="text-muted d-block small">Official machine learning tutorials</span>
-          </li>
-          <li class="list-group-item">
-            <a href="https://machinelearningmastery.com/machine-learning-in-python-step-by-step/" target="_blank">Machine Learning Mastery</a>
-            <span class="text-muted d-block small">Practical ML guide</span>
-          </li>
-          <li class="list-group-item">
-            <a href="https://www.kaggle.com/learn/intro-to-machine-learning" target="_blank">Kaggle Machine Learning Course</a>
-            <span class="text-muted d-block small">Free interactive ML course</span>
-          </li>
-          <li class="list-group-item">
-            <a href="https://developers.google.com/machine-learning/crash-course" target="_blank">Google ML Crash Course</a>
-            <span class="text-muted d-block small">ML fundamentals with exercises</span>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
-                                    
-                                    <!-- Activities Accordion -->
-                                    <div class="accordion mb-3" id="advancedActivities">
-                                        <div class="card activity-card mb-2">
-                                            <div class="card-header" id="advancedActivitiesHeading">
-                                                <h5 class="mb-0">
-                                                    <button class="btn btn-link collapse-btn" type="button" data-bs-toggle="collapse" data-bs-target="#advancedActivitiesCollapse">
-                                                        <i class="fas fa-tasks me-2"></i>Hands-on Activities
-                                                    </button>
-                                                </h5>
-                                            </div>
-                                            <div id="advancedActivitiesCollapse" class="collapse" aria-labelledby="advancedActivitiesHeading" data-parent="#advancedActivities">
-                                                <div class="card-body">
-                                                    <ul class="list-group list-group-flush">
-                                                        <li class="list-group-item">
-                                                            <strong>Classification:</strong> Build a classifier to predict iris flower species
-                                                        </li>
-                                                        <li class="list-group-item">
-                                                            <strong>Regression:</strong> Predict house prices using linear regression
-                                                        </li>
-                                                        <li class="list-group-item">
-                                                            <strong>Clustering:</strong> Group customers using K-means algorithm
-                                                        </li>
-                                                        <li class="list-group-item">
-                                                            <strong>Model Tuning:</strong> Optimize hyperparameters using GridSearchCV
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- Assignments Accordion -->
-                                    <div class="accordion mb-3" id="advancedAssignments">
-                                        <div class="card assignment-card mb-2">
-                                            <div class="card-header" id="advancedAssignmentsHeading">
-                                                <h5 class="mb-0">
-                                                    <button class="btn btn-link collapse-btn" type="button" data-bs-toggle="collapse" data-bs-target="#advancedAssignmentsCollapse">
-                                                        <i class="fas fa-clipboard-check me-2"></i>Assignments
-                                                    </button>
-                                                </h5>
-                                            </div>
-                                            <div id="advancedAssignmentsCollapse" class="collapse" aria-labelledby="advancedAssignmentsHeading" data-parent="#advancedAssignments">
-                                                <div class="card-body">
-                                                    <ul class="list-group list-group-flush">
-                                                        <li class="list-group-item">
-                                                            <strong>Sentiment Analysis:</strong> Classify movie reviews as positive or negative
-                                                        </li>
-                                                        <li class="list-group-item">
-                                                            <strong>Feature Importance:</strong> Identify which factors most influence diabetes risk
-                                                        </li>
-                                                        <li class="list-group-item">
-                                                            <strong>Model Comparison:</strong> Evaluate 3 different algorithms on the same dataset
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- Project -->
-                                    <div class="accordion" id="advancedProject">
-                                        <div class="card project-card">
-                                            <div class="card-header" id="advancedProjectHeading">
-                                                <h5 class="mb-0">
-                                                    <button class="btn btn-link collapse-btn" type="button" data-bs-toggle="collapse" data-bs-target="#advancedProjectCollapse">
-                                                        <i class="fas fa-project-diagram me-2"></i>Capstone Project
-                                                    </button>
-                                                </h5>
-                                            </div>
-                                            <div id="advancedProjectCollapse" class="collapse" aria-labelledby="advancedProjectHeading" data-parent="#advancedProject">
-                                                <div class="card-body">
-                                                    <h5>Predictive Maintenance System</h5>
-                                                    <p>Develop a machine learning model to predict equipment failures:</p>
-                                                    <ul>
-                                                        <li>Use sensor data to predict when machines might fail</li>
-                                                        <li>Experiment with different classification algorithms</li>
-                                                        <li>Evaluate model performance using appropriate metrics</li>
-                                                        <li>Create a simple Flask API to serve predictions</li>
-                                                    </ul>
-                                                    <div class="alert alert-info">
-                                                        <strong>Learning Outcomes:</strong> Feature engineering, model selection, evaluation metrics, deployment basics
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="d-flex justify-content-between align-items-center mt-3">
-                                        <span class="text-muted">Estimated time: 4-6 weeks</span>
-                                        <a href="#" class="btn btn-sm btn-outline-primary">Start Learning</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                              <h4 class="mt-4">if-else statement</h4>
+                              <div class="code-block">
+                                if condition:<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;# code if True<br>
+                                else:<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;# code if False
+                              </div>
 
-                        <!-- Expert Section -->
-                        <div class="progress-step">
-                            <div class="step-dot"></div>
-                            <div class="card lesson-card">
-                                <div class="card-body">
-                                    <div class="d-flex align-items-center mb-3">
-                                        <span class="badge bg-dark me-2">Expert</span>
-                                        <h3 class="lesson-title mb-0">4. Deep Learning & AI Implementation</h3>
-                                    </div>
-                                    <ul class="list-group list-group-flush mb-3">
-                                        <li class="list-group-item">
-                                            <i class="fas fa-check-circle text-success me-2"></i>
-                                            TensorFlow and PyTorch fundamentals
-                                        </li>
-                                        <li class="list-group-item">
-                                            <i class="fas fa-check-circle text-success me-2"></i>
-                                            Neural networks and architectures
-                                        </li>
-                                        <li class="list-group-item">
-                                            <i class="fas fa-check-circle text-success me-2"></i>
-                                            Natural Language Processing (NLP)
-                                        </li>
-                                        <li class="list-group-item">
-                                            <i class="fas fa-check-circle text-success me-2"></i>
-                                            Computer vision applications
-                                        </li>
-                                        <li class="list-group-item">
-                                            <i class="fas fa-check-circle text-success me-2"></i>
-                                            Deployment of AI models
-                                        </li>
-                                    </ul>
-                                    <!-- Expert Section Resources -->
-<div class="accordion mb-3" id="expertResources">
-  <div class="card resource-card mb-2">
-    <div class="card-header" id="expertResourcesHeading">
-      <h5 class="mb-0">
-        <button class="btn btn-link collapse-btn" type="button" data-bs-toggle="collapse" 
-                data-bs-target="#expertResourcesCollapse" aria-expanded="false" 
-                aria-controls="expertResourcesCollapse">
-          <i class="fas fa-external-link-alt me-2"></i>Additional Resources
-        </button>
-      </h5>
-    </div>
-    <div id="expertResourcesCollapse" class="collapse" aria-labelledby="expertResourcesHeading" 
-         data-parent="#expertResources">
-      <div class="card-body">
-        <h5>Deep Learning Resources</h5>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">
-            <a href="https://www.tensorflow.org/tutorials" target="_blank">TensorFlow Tutorials</a>
-            <span class="text-muted d-block small">Official TensorFlow guides</span>
-          </li>
-          <li class="list-group-item">
-            <a href="https://pytorch.org/tutorials/" target="_blank">PyTorch Tutorials</a>
-            <span class="text-muted d-block small">Official PyTorch learning resources</span>
-          </li>
-          <li class="list-group-item">
-            <a href="https://course.fast.ai/" target="_blank">Practical Deep Learning (fast.ai)</a>
-            <span class="text-muted d-block small">Free practical DL course</span>
-          </li>
-          <li class="list-group-item">
-            <a href="https://www.deeplearning.ai/" target="_blank">DeepLearning.AI</a>
-            <span class="text-muted d-block small">Andrew Ng's deep learning courses</span>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
-                                    
-                                    <!-- Activities Accordion -->
-                                    <div class="accordion mb-3" id="expertActivities">
-                                        <div class="card activity-card mb-2">
-                                            <div class="card-header" id="expertActivitiesHeading">
-                                                <h5 class="mb-0">
-                                                    <button class="btn btn-link collapse-btn" type="button" data-bs-toggle="collapse" data-bs-target="#expertActivitiesCollapse">
-                                                        <i class="fas fa-tasks me-2"></i>Hands-on Activities
-                                                    </button>
-                                                </h5>
-                                            </div>
-                                            <div id="expertActivitiesCollapse" class="collapse" aria-labelledby="expertActivitiesHeading" data-parent="#expertActivities">
-                                                <div class="card-body">
-                                                    <ul class="list-group list-group-flush">
-                                                        <li class="list-group-item">
-                                                            <strong>MNIST Classifier:</strong> Build a neural network to recognize handwritten digits
-                                                        </li>
-                                                        <li class="list-group-item">
-                                                            <strong>Transfer Learning:</strong> Fine-tune a pre-trained model for a custom task
-                                                        </li>
-                                                        <li class="list-group-item">
-                                                            <strong>Text Generation:</strong> Train an RNN to generate text in a specific style
-                                                        </li>
-                                                        <li class="list-group-item">
-                                                            <strong>Model Conversion:</strong> Convert a TensorFlow model to TensorFlow Lite
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- Assignments Accordion -->
-                                    <div class="accordion mb-3" id="expertAssignments">
-                                        <div class="card assignment-card mb-2">
-                                            <div class="card-header" id="expertAssignmentsHeading">
-                                                <h5 class="mb-0">
-                                                    <button class="btn btn-link collapse-btn" type="button" data-bs-toggle="collapse" data-bs-target="#expertAssignmentsCollapse">
-                                                        <i class="fas fa-clipboard-check me-2"></i>Assignments
-                                                    </button>
-                                                </h5>
-                                            </div>
-                                            <div id="expertAssignmentsCollapse" class="collapse" aria-labelledby="expertAssignmentsHeading" data-parent="#expertAssignments">
-                                                <div class="card-body">
-                                                    <ul class="list-group list-group-flush">
-                                                        <li class="list-group-item">
-                                                            <strong>Image Style Transfer:</strong> Implement neural style transfer between images
-                                                        </li>
-                                                        <li class="list-group-item">
-                                                            <strong>Chatbot:</strong> Build a simple sequence-to-sequence chatbot
-                                                        </li>
-                                                        <li class="list-group-item">
-                                                            <strong>Object Detection:</strong> Detect objects in images using YOLO or Faster R-CNN
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- Project -->
-                                    <div class="accordion" id="expertProject">
-                                        <div class="card project-card">
-                                            <div class="card-header" id="expertProjectHeading">
-                                                <h5 class="mb-0">
-                                                    <button class="btn btn-link collapse-btn" type="button" data-bs-toggle="collapse" data-bs-target="#expertProjectCollapse">
-                                                        <i class="fas fa-project-diagram me-2"></i>Capstone Project
-                                                    </button>
-                                                </h5>
-                                            </div>
-                                            <div id="expertProjectCollapse" class="collapse" aria-labelledby="expertProjectHeading" data-parent="#expertProject">
-                                                <div class="card-body">
-                                                    <h5>End-to-End AI Application</h5>
-                                                    <p>Develop a complete AI application with frontend and backend:</p>
-                                                    <ul>
-                                                        <li>Choose a problem domain (CV, NLP, etc.)</li>
-                                                        <li>Train and optimize a deep learning model</li>
-                                                        <li>Create a Flask/FastAPI backend service</li>
-                                                        <li>Build a simple frontend interface</li>
-                                                        <li>Deploy using any cloud platform</li>
-                                                    </ul>
-                                                    <div class="alert alert-info">
-                                                        <strong>Learning Outcomes:</strong> Full-stack AI development, model optimization, API design, deployment strategies
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="d-flex justify-content-between align-items-center mt-3">
-                                        <span class="text-muted">Estimated time: 6-8 weeks</span>
-                                        <a href="#" class="btn btn-sm btn-outline-primary">Start Learning</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                              <h4 class="mt-4">if-elif-else ladder</h4>
+                              <div class="code-block">
+                                if condition1:<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;# code if condition1 True<br>
+                                elif condition2:<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;# code if condition2 True<br>
+                                else:<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;# code if all False
+                              </div>
 
-                        <!-- Final Projects Section -->
-                        <div class="progress-step">
-                            <div class="step-dot"></div>
-                            <div class="card lesson-card bg-light">
-                                <div class="card-body text-center">
-                                    <h3 class="lesson-title mb-3"><i class="fas fa-rocket me-2"></i>Final Projects Gallery</h3>
-                                    <p class="mb-4">Showcase your skills with these real-world AI projects</p>
-                                    <div class="row">
-                                        <div class="col-md-4 mb-3">
-                                            <div class="card h-100">
-                                                <div class="card-body">
-                                                    <span class="badge badge-ai mb-2">Beginner</span>
-                                                    <h5>Sentiment Analysis</h5>
-                                                    <p>Analyze product reviews using NLP</p>
-                                                    <hr>
-                                                    <h6>Activities:</h6>
-                                                    <ul class="text-start small">
-                                                        <li>Text preprocessing</li>
-                                                        <li>Bag-of-words model</li>
-                                                        <li>Basic classification</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 mb-3">
-                                            <div class="card h-100">
-                                                <div class="card-body">
-                                                    <span class="badge badge-ai mb-2">Intermediate</span>
-                                                    <h5>Predictive Model</h5>
-                                                    <p>House price prediction using ML</p>
-                                                    <hr>
-                                                    <h6>Activities:</h6>
-                                                    <ul class="text-start small">
-                                                        <li>Feature engineering</li>
-                                                        <li>Regression models</li>
-                                                        <li>Model evaluation</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 mb-3">
-                                            <div class="card h-100">
-                                                <div class="card-body">
-                                                    <span class="badge badge-ai mb-2">Advanced</span>
-                                                    <h5>Image Classifier</h5>
-                                                    <p>CNN for object recognition</p>
-                                                    <hr>
-                                                    <h6>Activities:</h6>
-                                                    <ul class="text-start small">
-                                                        <li>Data augmentation</li>
-                                                        <li>CNN architecture</li>
-                                                        <li>Transfer learning</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- FAQ Tab -->
-            <div class="tab-pane fade" id="pills-faq" role="tabpanel">
-                <div class="row">
-                    <div class="col-lg-8 mx-auto">
-                        <!-- FAQ 1 -->
-                        <div class="card faq-card">
-                            <div class="card-body">
-                                <h3 class="faq-question card-title">1. What is Artificial Intelligence (AI)?</h3>
-                                <p class="card-text">
-                                    AI refers to the simulation of human intelligence in machines that are programmed to think and act like humans. Imagine machines that can learn and act like humans! That's the basic idea of AI. It's all about making computers intelligent enough to solve problems, understand information, and even make decisions on their own, just like we do.
-                                </p>
-                            </div>
-                        </div>
-
-                        <!-- FAQ 2 -->
-                        <div class="card faq-card">
-                            <div class="card-body">
-                                <h3 class="faq-question card-title">2. What are the different types of AI?</h3>
-                                <p class="card-text">
-                                    There are different ways to approach AI, but here are two main categories:
-                                </p>
-                                <ul class="list-group list-group-flush mb-3">
-                                    <li class="list-group-item">
-                                        <span class="highlight">Narrow AI:</span> This is the kind you see most often, like AI assistants in your phone or self-driving cars. It's good at specific tasks, but not as flexible as humans.
-                                    </li>
-                                    <li class="list-group-item">
-                                        <span class="highlight">General AI:</span> This is the holy grail of AI – machines that are as intelligent as us, able to learn and do anything humans can. We're still far from that, but it's a fascinating goal!
-                                    </li>
+                              <div class="activity mt-4">
+                                <h4>Activity 1: Grade Calculator</h4>
+                                <p>Write a program that takes a score (0-100) and prints the corresponding grade:</p>
+                                <ul>
+                                  <li>90-100: A</li>
+                                  <li>80-89: B</li>
+                                  <li>70-79: C</li>
+                                  <li>60-69: D</li>
+                                  <li>Below 60: F</li>
                                 </ul>
-                            </div>
-                        </div>
-
-                        <!-- FAQ 3 -->
-                        <div class="card faq-card">
-                            <div class="card-body">
-                                <h3 class="faq-question card-title">3. Why is Python popular for AI development?</h3>
-                                <p class="card-text">
-                                    Python is like a friendly coding language. It's easy to learn, powerful, and has tons of libraries specifically designed for AI, like:
-                                </p>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="alert alert-info mb-2">
-                                            <strong>NumPy:</strong> Handles numbers like a champ.
-                                        </div>
-                                        <div class="alert alert-info mb-2">
-                                            <strong>Pandas:</strong> Organizes your data like a spreadsheet on steroids.
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="alert alert-info mb-2">
-                                            <strong>scikit-learn:</strong> Has ready-made tools for common AI tasks.
-                                        </div>
-                                        <div class="alert alert-info mb-2">
-                                            <strong>TensorFlow & PyTorch:</strong> Build complex AI models, like for image recognition or language translation.
-                                        </div>
-                                    </div>
+                                <button class="btn btn-primary" onclick="showSolution('solution1')">Show Solution</button>
+                                <div id="solution1" style="display:none;" class="mt-3 code-block">
+                                  score = 85<br><br>
+                                  if score >= 90:<br>
+                                  &nbsp;&nbsp;&nbsp;&nbsp;print("A")<br>
+                                  elif score >= 80:<br>
+                                  &nbsp;&nbsp;&nbsp;&nbsp;print("B")<br>
+                                  elif score >= 70:<br>
+                                  &nbsp;&nbsp;&nbsp;&nbsp;print("C")<br>
+                                  elif score >= 60:<br>
+                                  &nbsp;&nbsp;&nbsp;&nbsp;print("D")<br>
+                                  else:<br>
+                                  &nbsp;&nbsp;&nbsp;&nbsp;print("F")
                                 </div>
-                            </div>
-                        </div>
+                              </div>
 
-                        <!-- FAQ 4 -->
-                        <div class="card faq-card">
-                            <div class="card-body">
-                                <h3 class="faq-question card-title">4. What are the career opportunities in AI with Python?</h3>
-                                <p class="card-text">
-                                    AI is a booming field, so there's a huge demand for people who know how to build and use it. With Python skills, you could be an <span class="highlight">AI engineer</span>, <span class="highlight">researcher</span>, <span class="highlight">data scientist</span>, or even start your own <span class="highlight">AI-powered business</span>!
-                                </p>
+                              <div class="quiz-question mt-4">
+                                <h4>Practice Question 1</h4>
+                                <p>What will this code print?</p>
+                                <div class="code-block">
+                                  x = 15<br>
+                                  if x > 10:<br>
+                                  &nbsp;&nbsp;&nbsp;&nbsp;print("A")<br>
+                                  if x > 5:<br>
+                                  &nbsp;&nbsp;&nbsp;&nbsp;print("B")<br>
+                                  else:<br>
+                                  &nbsp;&nbsp;&nbsp;&nbsp;print("C")
+                                </div>
+                                <button class="btn btn-secondary" onclick="showAnswer('answer1')">Show Answer</button>
+                                <div id="answer1" style="display:none;" class="mt-3">
+                                  <p>It will print:<br>A<br>B</p>
+                                  <p>The second if statement is independent of the first one, and since x > 5 is also True, "B" gets printed.</p>
+                                </div>
+                              </div>
                             </div>
+                          </div>
                         </div>
+                      </div>
 
-                        <!-- FAQ 6 -->
-                        <div class="card faq-card">
-                            <div class="card-body">
-                                <h3 class="faq-question card-title">6. Can You Do AI with Python?</h3>
-                                <p class="card-text">
-                                    Python's rich ecosystem makes it ideal for various AI tasks, from building simple scripts to complex models. Popular libraries like <span class="highlight">TensorFlow</span> and <span class="highlight">PyTorch</span> provide powerful tools for machine learning and deep learning.
-                                </p>
+                      <!-- Loops Section -->
+                      <div class="accordion mb-4" id="loopsAccordion">
+                        <div class="accordion-item">
+                          <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                              Loops (while and for)
+                            </button>
+                          </h2>
+                          <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#loopsAccordion">
+                            <div class="accordion-body">
+                              <h4>while loop</h4>
+                              <div class="code-block">
+                                while condition:<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;# code to execute while condition is True
+                              </div>
+
+                              <h4 class="mt-4">for loop</h4>
+                              <div class="code-block">
+                                for item in sequence:<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;# code to execute for each item
+                              </div>
+
+                              <h4 class="mt-4">Loop control statements</h4>
+                              <ul>
+                                <li><strong>break</strong>: Exit the loop immediately</li>
+                                <li><strong>continue</strong>: Skip the rest of current iteration</li>
+                                <li><strong>pass</strong>: Do nothing (placeholder)</li>
+                              </ul>
+
+                              <div class="activity mt-4">
+                                <h4>Activity 2: Number Guessing Game</h4>
+                                <p>Create a number guessing game where:</p>
+                                <ol>
+                                  <li>The program generates a random number between 1-100</li>
+                                  <li>The user gets up to 10 guesses</li>
+                                  <li>After each guess, tell the user if it's too high or too low</li>
+                                  <li>If they guess correctly, congratulate them</li>
+                                  <li>If they run out of guesses, reveal the number</li>
+                                </ol>
+                                <button class="btn btn-primary" onclick="showSolution('solution2')">Show Solution</button>
+                                <div id="solution2" style="display:none;" class="mt-3 code-block">
+                                  import random<br><br>
+                                  secret_number = random.randint(1, 100)<br>
+                                  guesses = 0<br><br>
+                                  while guesses < 10:<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;guess = int(input("Guess the number (1-100): "))<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;guesses += 1<br><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;if guess == secret_number:<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(f"Congratulations! You guessed it in {guesses} tries!")<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;elif guess < secret_number:<br>
+                                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("Too low!")<br>
+                                      &nbsp;&nbsp;&nbsp;&nbsp;else:<br>
+                                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("Too high!")<br><br>
+                                      else:<br>
+                                      &nbsp;&nbsp;&nbsp;&nbsp;print(f"Sorry, you're out of guesses. The number was {secret_number}.")
+                                </div>
+                              </div>
+
+                              <div class="quiz-question mt-4">
+                                <h4>Practice Question 2</h4>
+                                <p>What will this code print?</p>
+                                <div class="code-block">
+                                  for i in range(5):<br>
+                                  &nbsp;&nbsp;&nbsp;&nbsp;if i % 2 == 0:<br>
+                                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;continue<br>
+                                  &nbsp;&nbsp;&nbsp;&nbsp;print(i)
+                                </div>
+                                <button class="btn btn-secondary" onclick="showAnswer('answer2')">Show Answer</button>
+                                <div id="answer2" style="display:none;" class="mt-3">
+                                  <p>It will print:<br>1<br>3</p>
+                                  <p>The continue statement skips even numbers (when i%2==0), so only odd numbers 1 and 3 are printed.</p>
+                                </div>
+                              </div>
                             </div>
+                          </div>
                         </div>
+                      </div>
 
-                        <!-- FAQ 7 -->
-                        <div class="card faq-card">
-                            <div class="card-body">
-                                <h3 class="faq-question card-title">7. Which Python Version is Best for AI?</h3>
-                                <p class="card-text">
-                                    While both Python 2 and 3 have AI applications, <span class="highlight">Python 3</span> is the recommended choice for new projects due to its better performance, security, and community support. Most AI libraries are already optimized for Python 3.
-                                </p>
+                      <!-- Advanced Section -->
+                      <div class="accordion mb-4" id="advancedAccordion">
+                        <div class="accordion-item">
+                          <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+                              Advanced Control Flow
+                            </button>
+                          </h2>
+                          <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#advancedAccordion">
+                            <div class="accordion-body">
+                              <h4>Nested Control Structures</h4>
+                              <p>You can nest if statements and loops inside each other:</p>
+                              <div class="code-block">
+                                for i in range(1, 6):<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;if i % 2 == 0:<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(f"{i} is even")<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;else:<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(f"{i} is odd")
+                              </div>
+
+                              <h4 class="mt-4">List Comprehensions</h4>
+                              <p>A concise way to create lists using for loops:</p>
+                              <div class="code-block">
+                                squares = [x**2 for x in range(10) if x % 2 == 0]<br>
+                                # Creates [0, 4, 16, 36, 64]
+                              </div>
+
+                              <div class="activity mt-4">
+                                <h4>Activity 3: FizzBuzz</h4>
+                                <p>Write a program that prints numbers from 1 to 100:</p>
+                                <ul>
+                                  <li>For multiples of 3, print "Fizz" instead</li>
+                                  <li>For multiples of 5, print "Buzz" instead</li>
+                                  <li>For multiples of both 3 and 5, print "FizzBuzz"</li>
+                                </ul>
+                                <button class="btn btn-primary" onclick="showSolution('solution3')">Show Solution</button>
+                                <div id="solution3" style="display:none;" class="mt-3 code-block">
+                                  for num in range(1, 101):<br>
+                                  &nbsp;&nbsp;&nbsp;&nbsp;if num % 15 == 0:<br>
+                                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("FizzBuzz")<br>
+                                  &nbsp;&nbsp;&nbsp;&nbsp;elif num % 3 == 0:<br>
+                                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("Fizz")<br>
+                                  &nbsp;&nbsp;&nbsp;&nbsp;elif num % 5 == 0:<br>
+                                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("Buzz")<br>
+                                  &nbsp;&nbsp;&nbsp;&nbsp;else:<br>
+                                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(num)
+                                </div>
+                              </div>
+
+                              <div class="quiz-question mt-4">
+                                <h4>Practice Question 3</h4>
+                                <p>What does this list comprehension produce?</p>
+                                <div class="code-block">
+                                  [x for x in 'hello' if x not in 'aeiou']
+                                </div>
+                                <button class="btn btn-secondary" onclick="showAnswer('answer3')">Show Answer</button>
+                                <div id="answer3" style="display:none;" class="mt-3">
+                                  <p>It produces: ['h', 'l', 'l']</p>
+                                  <p>This filters out vowels from the string 'hello', leaving only the consonants.</p>
+                                </div>
+                              </div>
                             </div>
+                          </div>
                         </div>
-
-                        <!-- FAQ 8 -->
-                        <div class="card faq-card">
-                            <div class="card-body">
-                                <h3 class="faq-question card-title">8. Is AI Hard in Python?</h3>
-                                <p class="card-text">
-                                    The difficulty depends on your prior programming experience and the specific AI task you're tackling. <span class="highlight">Basic AI concepts</span> in Python can be grasped relatively easily, but building <span class="highlight">complex models</span> requires deeper understanding and practice.
-                                </p>
-                            </div>
-                        </div>
-
-                        <!-- Resource Section -->
-                        <div class="resource-section text-center">
-                            <h4 class="mb-3">Want to learn more about AI with Python?</h4>
-                            <a href="https://www.geeksforgeeks.org/python-ai/" target="_blank" class="btn btn-primary btn-lg">
-                                Visit GeeksforGeeks Python AI Tutorial
-                            </a>
-                        </div>
+                      </div>
                     </div>
+                    <li class="list-group-item">
+                      <i class="fas fa-check-circle text-success me-2"></i>
+                      Functions and modules
+                    </li>
+                    <li class="list-group-item">
+                      <i class="fas fa-check-circle text-success me-2"></i>
+                      File handling and exceptions
+                    </li>
+                  </ul>
+                  <!-- Beginner Section Resources -->
+                  <div class="accordion mb-3" id="beginnerResources">
+                    <div class="card resource-card mb-2">
+                      <div class="card-header" id="beginnerResourcesHeading">
+                        <h5 class="mb-0">
+                          <button class="btn btn-link collapse-btn" type="button" data-bs-toggle="collapse" data-bs-target="#beginnerResourcesCollapse" aria-expanded="false" aria-controls="beginnerResourcesCollapse">
+                            <i class="fas fa-external-link-alt me-2"></i>Additional Resources
+                          </button>
+                        </h5>
+                      </div>
+                      <div id="beginnerResourcesCollapse" class="collapse" aria-labelledby="beginnerResourcesHeading" data-parent="#beginnerResources">
+                        <div class="card-body">
+                          <h5>Python Fundamentals Resources</h5>
+                          <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                              <a href="https://docs.python.org/3/tutorial/" target="_blank">Python Official Documentation</a>
+                              <span class="text-muted d-block small">Complete Python tutorial from the creators</span>
+                            </li>
+                            <li class="list-group-item">
+                              <a href="https://www.learnpython.org/" target="_blank">LearnPython.org</a>
+                              <span class="text-muted d-block small">Interactive Python tutorial</span>
+                            </li>
+                            <li class="list-group-item">
+                              <a href="https://realpython.com/start-here/" target="_blank">Real Python Tutorials</a>
+                              <span class="text-muted d-block small">Practical Python tutorials for beginners</span>
+                            </li>
+                            <li class="list-group-item">
+                              <a href="https://www.codecademy.com/learn/learn-python-3" target="_blank">Codecademy Python Course</a>
+                              <span class="text-muted d-block small">Interactive coding exercises</span>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Activities Accordion -->
+                  <div class="accordion mb-3" id="beginnerActivities">
+                    <div class="card activity-card mb-2">
+                      <div class="card-header" id="beginnerActivitiesHeading">
+                        <h5 class="mb-0">
+                          <button class="btn btn-link collapse-btn" type="button" data-bs-toggle="collapse" data-bs-target="#beginnerActivitiesCollapse">
+                            <i class="fas fa-tasks me-2"></i>Hands-on Activities
+                          </button>
+                        </h5>
+                      </div>
+                      <div id="beginnerActivitiesCollapse" class="collapse" aria-labelledby="beginnerActivitiesHeading" data-parent="#beginnerActivities">
+                        <div class="card-body">
+                          <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                              <strong>Calculator App:</strong> Build a console calculator that can perform basic arithmetic operations
+                            </li>
+                            <li class="list-group-item">
+                              <strong>Number Guessing Game:</strong> Program where the computer randomly selects a number and the user tries to guess it
+                            </li>
+                            <li class="list-group-item">
+                              <strong>Text Analyzer:</strong> Count words, characters, and vowels in a text file
+                            </li>
+                            <li class="list-group-item">
+                              <strong>Temperature Converter:</strong> Convert between Celsius and Fahrenheit
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Assignments Accordion -->
+                  <div class="accordion mb-3" id="beginnerAssignments">
+                    <div class="card assignment-card mb-2">
+                      <div class="card-header" id="beginnerAssignmentsHeading">
+                        <h5 class="mb-0">
+                          <button class="btn btn-link collapse-btn" type="button" data-bs-toggle="collapse" data-bs-target="#beginnerAssignmentsCollapse">
+                            <i class="fas fa-clipboard-check me-2"></i>Assignments
+                          </button>
+                        </h5>
+                      </div>
+                      <div id="beginnerAssignmentsCollapse" class="collapse" aria-labelledby="beginnerAssignmentsHeading" data-parent="#beginnerAssignments">
+                        <div class="card-body">
+                          <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                              <strong>To-Do List:</strong> Create a command-line to-do list application with add, delete, and view functionality
+                            </li>
+                            <li class="list-group-item">
+                              <strong>Contact Book:</strong> Build a contact management system that stores names, emails, and phone numbers
+                            </li>
+                            <li class="list-group-item">
+                              <strong>Quiz Game:</strong> Develop a multiple-choice quiz that tracks scores
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Project -->
+                  <div class="accordion" id="beginnerProject">
+                    <div class="card project-card">
+                      <div class="card-header" id="beginnerProjectHeading">
+                        <h5 class="mb-0">
+                          <button class="btn btn-link collapse-btn" type="button" data-bs-toggle="collapse" data-bs-target="#beginnerProjectCollapse">
+                            <i class="fas fa-project-diagram me-2"></i>Capstone Project
+                          </button>
+                        </h5>
+                      </div>
+                      <div id="beginnerProjectCollapse" class="collapse" aria-labelledby="beginnerProjectHeading" data-parent="#beginnerProject">
+                        <div class="card-body">
+                          <h5>Bank Account System</h5>
+                          <p>Create a Python program that simulates a basic banking system with the following features:</p>
+                          <ul>
+                            <li>Create accounts with account numbers and balances</li>
+                            <li>Deposit and withdraw funds with validation</li>
+                            <li>View account details and transaction history</li>
+                            <li>Save account data to a file</li>
+                          </ul>
+                          <div class="alert alert-info">
+                            <strong>Learning Outcomes:</strong> File I/O, data structures, control flow, error handling
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="d-flex justify-content-between align-items-center mt-3">
+                    <span class="text-muted">Estimated time: 2-3 weeks</span>
+                    <a href="#" class="btn btn-sm btn-outline-primary">Start Learning</a>
+                  </div>
                 </div>
+              </div>
             </div>
+
+            <!-- Intermediate Section -->
+            <div class="progress-step">
+              <div class="step-dot"></div>
+              <div class="card lesson-card">
+                <div class="card-body">
+                  <div class="d-flex align-items-center mb-3">
+                    <span class="badge bg-warning text-dark me-2">Intermediate</span>
+                    <h3 class="lesson-title mb-0">2. Python for Data Science</h3>
+                  </div>
+                  <ul class="list-group list-group-flush mb-3">
+                    <li class="list-group-item">
+                      <i class="fas fa-check-circle text-success me-2"></i>
+                      NumPy for numerical computing
+                    </li>
+                    <li class="list-group-item">
+                      <i class="fas fa-check-circle text-success me-2"></i>
+                      Pandas for data manipulation
+                    </li>
+                    <li class="list-group-item">
+                      <i class="fas fa-check-circle text-success me-2"></i>
+                      Matplotlib/Seaborn for visualization
+                    </li>
+                    <li class="list-group-item">
+                      <i class="fas fa-check-circle text-success me-2"></i>
+                      Data cleaning and preprocessing
+                    </li>
+                  </ul>
+                  <!-- Intermediate Section 
+                                    
+                                    <!-- Activities Accordion -->
+                  <div class="accordion mb-3" id="intermediateResources">
+                    <div class="card resource-card mb-2">
+                      <div class="card-header" id="intermediateResourcesHeading">
+                        <h5 class="mb-0">
+                          <button class="btn btn-link collapse-btn" type="button" data-bs-toggle="collapse" data-bs-target="#intermediateResourcesCollapse" aria-expanded="false" aria-controls="intermediateResourcesCollapse">
+                            <i class="fas fa-external-link-alt me-2"></i>Additional Resources
+                          </button>
+                        </h5>
+                      </div>
+                      <div id="intermediateResourcesCollapse" class="collapse" aria-labelledby="intermediateResourcesHeading" data-parent="#intermediateResources">
+                        <div class="card-body">
+                          <h5>Data Science Resources</h5>
+                          <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                              <a href="https://numpy.org/doc/stable/user/quickstart.html" target="_blank">NumPy Quickstart</a>
+                              <span class="text-muted d-block small">Official NumPy tutorial</span>
+                            </li>
+                            <li class="list-group-item">
+                              <a href="https://pandas.pydata.org/docs/getting_started/intro_tutorials/index.html" target="_blank">Pandas Tutorials</a>
+                              <span class="text-muted d-block small">Official Pandas learning resources</span>
+                            </li>
+                            <li class="list-group-item">
+                              <a href="https://seaborn.pydata.org/tutorial.html" target="_blank">Seaborn Tutorial</a>
+                              <span class="text-muted d-block small">Statistical data visualization guide</span>
+                            </li>
+                            <li class="list-group-item">
+                              <a href="https://www.datacamp.com/courses/intro-to-python-for-data-science" target="_blank">DataCamp Python for Data Science</a>
+                              <span class="text-muted d-block small">Interactive data science course</span>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion mb-3" id="intermediateActivities">
+                    <div class="card activity-card mb-2">
+                      <div class="card-header" id="intermediateActivitiesHeading">
+                        <h5 class="mb-0">
+                          <button class="btn btn-link collapse-btn" type="button" data-bs-toggle="collapse" data-bs-target="#intermediateActivitiesCollapse">
+                            <i class="fas fa-tasks me-2"></i>Hands-on Activities
+                          </button>
+                        </h5>
+                      </div>
+                      <div id="intermediateActivitiesCollapse" class="collapse" aria-labelledby="intermediateActivitiesHeading" data-parent="#intermediateActivities">
+                        <div class="card-body">
+                          <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                              <strong>Data Exploration:</strong> Analyze a dataset of your choice using Pandas
+                            </li>
+                            <li class="list-group-item">
+                              <strong>Visualization Challenge:</strong> Create 5 different chart types from the same dataset
+                            </li>
+                            <li class="list-group-item">
+                              <strong>Data Cleaning:</strong> Handle missing values and outliers in a messy dataset
+                            </li>
+                            <li class="list-group-item">
+                              <strong>NumPy Operations:</strong> Implement matrix operations without using loops
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Assignments Accordion -->
+                  <div class="accordion mb-3" id="intermediateAssignments">
+                    <div class="card assignment-card mb-2">
+                      <div class="card-header" id="intermediateAssignmentsHeading">
+                        <h5 class="mb-0">
+                          <button class="btn btn-link collapse-btn" type="button" data-bs-toggle="collapse" data-bs-target="#intermediateAssignmentsCollapse">
+                            <i class="fas fa-clipboard-check me-2"></i>Assignments
+                          </button>
+                        </h5>
+                      </div>
+                      <div id="intermediateAssignmentsCollapse" class="collapse" aria-labelledby="intermediateAssignmentsHeading" data-parent="#intermediateAssignments">
+                        <div class="card-body">
+                          <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                              <strong>COVID-19 Analysis:</strong> Analyze trends in COVID-19 data using Pandas and visualize results
+                            </li>
+                            <li class="list-group-item">
+                              <strong>Stock Market:</strong> Calculate moving averages and other indicators from stock data
+                            </li>
+                            <li class="list-group-item">
+                              <strong>Data Pipeline:</strong> Build an ETL pipeline that cleans and transforms raw data
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Project -->
+                  <div class="accordion" id="intermediateProject">
+                    <div class="card project-card">
+                      <div class="card-header" id="intermediateProjectHeading">
+                        <h5 class="mb-0">
+                          <button class="btn btn-link collapse-btn" type="button" data-bs-toggle="collapse" data-bs-target="#intermediateProjectCollapse">
+                            <i class="fas fa-project-diagram me-2"></i>Capstone Project
+                          </button>
+                        </h5>
+                      </div>
+                      <div id="intermediateProjectCollapse" class="collapse" aria-labelledby="intermediateProjectHeading" data-parent="#intermediateProject">
+                        <div class="card-body">
+                          <h5>Exploratory Data Analysis (EDA) Dashboard</h5>
+                          <p>Create a Jupyter Notebook that performs comprehensive EDA on a dataset of your choice:</p>
+                          <ul>
+                            <li>Load and clean the dataset</li>
+                            <li>Perform statistical analysis</li>
+                            <li>Create visualizations to reveal insights</li>
+                            <li>Write a summary of your findings</li>
+                          </ul>
+                          <div class="alert alert-info">
+                            <strong>Learning Outcomes:</strong> Data wrangling, visualization, statistical analysis, storytelling with data
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="d-flex justify-content-between align-items-center mt-3">
+                    <span class="text-muted">Estimated time: 3-4 weeks</span>
+                    <a href="#" class="btn btn-sm btn-outline-primary">Start Learning</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Advanced Section -->
+            <div class="progress-step">
+              <div class="step-dot"></div>
+              <div class="card lesson-card">
+                <div class="card-body">
+                  <div class="d-flex align-items-center mb-3">
+                    <span class="badge bg-danger me-2">Advanced</span>
+                    <h3 class="lesson-title mb-0">3. Machine Learning with Python</h3>
+                  </div>
+                  <ul class="list-group list-group-flush mb-3">
+                    <li class="list-group-item">
+                      <i class="fas fa-check-circle text-success me-2"></i>
+                      Scikit-learn for ML algorithms
+                    </li>
+                    <li class="list-group-item">
+                      <i class="fas fa-check-circle text-success me-2"></i>
+                      Supervised vs unsupervised learning
+                    </li>
+                    <li class="list-group-item">
+                      <i class="fas fa-check-circle text-success me-2"></i>
+                      Model evaluation and validation
+                    </li>
+                    <li class="list-group-item">
+                      <i class="fas fa-check-circle text-success me-2"></i>
+                      Feature engineering techniques
+                    </li>
+                  </ul><!-- Advanced Section Resources -->
+                  <div class="accordion mb-3" id="advancedResources">
+                    <div class="card resource-card mb-2">
+                      <div class="card-header" id="advancedResourcesHeading">
+                        <h5 class="mb-0">
+                          <button class="btn btn-link collapse-btn" type="button" data-bs-toggle="collapse" data-bs-target="#advancedResourcesCollapse" aria-expanded="false" aria-controls="advancedResourcesCollapse">
+                            <i class="fas fa-external-link-alt me-2"></i>Additional Resources
+                          </button>
+                        </h5>
+                      </div>
+                      <div id="advancedResourcesCollapse" class="collapse" aria-labelledby="advancedResourcesHeading" data-parent="#advancedResources">
+                        <div class="card-body">
+                          <h5>Machine Learning Resources</h5>
+                          <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                              <a href="https://scikit-learn.org/stable/tutorial/index.html" target="_blank">scikit-learn Tutorials</a>
+                              <span class="text-muted d-block small">Official machine learning tutorials</span>
+                            </li>
+                            <li class="list-group-item">
+                              <a href="https://machinelearningmastery.com/machine-learning-in-python-step-by-step/" target="_blank">Machine Learning Mastery</a>
+                              <span class="text-muted d-block small">Practical ML guide</span>
+                            </li>
+                            <li class="list-group-item">
+                              <a href="https://www.kaggle.com/learn/intro-to-machine-learning" target="_blank">Kaggle Machine Learning Course</a>
+                              <span class="text-muted d-block small">Free interactive ML course</span>
+                            </li>
+                            <li class="list-group-item">
+                              <a href="https://developers.google.com/machine-learning/crash-course" target="_blank">Google ML Crash Course</a>
+                              <span class="text-muted d-block small">ML fundamentals with exercises</span>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Activities Accordion -->
+                  <div class="accordion mb-3" id="advancedActivities">
+                    <div class="card activity-card mb-2">
+                      <div class="card-header" id="advancedActivitiesHeading">
+                        <h5 class="mb-0">
+                          <button class="btn btn-link collapse-btn" type="button" data-bs-toggle="collapse" data-bs-target="#advancedActivitiesCollapse">
+                            <i class="fas fa-tasks me-2"></i>Hands-on Activities
+                          </button>
+                        </h5>
+                      </div>
+                      <div id="advancedActivitiesCollapse" class="collapse" aria-labelledby="advancedActivitiesHeading" data-parent="#advancedActivities">
+                        <div class="card-body">
+                          <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                              <strong>Classification:</strong> Build a classifier to predict iris flower species
+                            </li>
+                            <li class="list-group-item">
+                              <strong>Regression:</strong> Predict house prices using linear regression
+                            </li>
+                            <li class="list-group-item">
+                              <strong>Clustering:</strong> Group customers using K-means algorithm
+                            </li>
+                            <li class="list-group-item">
+                              <strong>Model Tuning:</strong> Optimize hyperparameters using GridSearchCV
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Assignments Accordion -->
+                  <div class="accordion mb-3" id="advancedAssignments">
+                    <div class="card assignment-card mb-2">
+                      <div class="card-header" id="advancedAssignmentsHeading">
+                        <h5 class="mb-0">
+                          <button class="btn btn-link collapse-btn" type="button" data-bs-toggle="collapse" data-bs-target="#advancedAssignmentsCollapse">
+                            <i class="fas fa-clipboard-check me-2"></i>Assignments
+                          </button>
+                        </h5>
+                      </div>
+                      <div id="advancedAssignmentsCollapse" class="collapse" aria-labelledby="advancedAssignmentsHeading" data-parent="#advancedAssignments">
+                        <div class="card-body">
+                          <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                              <strong>Sentiment Analysis:</strong> Classify movie reviews as positive or negative
+                            </li>
+                            <li class="list-group-item">
+                              <strong>Feature Importance:</strong> Identify which factors most influence diabetes risk
+                            </li>
+                            <li class="list-group-item">
+                              <strong>Model Comparison:</strong> Evaluate 3 different algorithms on the same dataset
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Project -->
+                  <div class="accordion" id="advancedProject">
+                    <div class="card project-card">
+                      <div class="card-header" id="advancedProjectHeading">
+                        <h5 class="mb-0">
+                          <button class="btn btn-link collapse-btn" type="button" data-bs-toggle="collapse" data-bs-target="#advancedProjectCollapse">
+                            <i class="fas fa-project-diagram me-2"></i>Capstone Project
+                          </button>
+                        </h5>
+                      </div>
+                      <div id="advancedProjectCollapse" class="collapse" aria-labelledby="advancedProjectHeading" data-parent="#advancedProject">
+                        <div class="card-body">
+                          <h5>Predictive Maintenance System</h5>
+                          <p>Develop a machine learning model to predict equipment failures:</p>
+                          <ul>
+                            <li>Use sensor data to predict when machines might fail</li>
+                            <li>Experiment with different classification algorithms</li>
+                            <li>Evaluate model performance using appropriate metrics</li>
+                            <li>Create a simple Flask API to serve predictions</li>
+                          </ul>
+                          <div class="alert alert-info">
+                            <strong>Learning Outcomes:</strong> Feature engineering, model selection, evaluation metrics, deployment basics
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="d-flex justify-content-between align-items-center mt-3">
+                    <span class="text-muted">Estimated time: 4-6 weeks</span>
+                    <a href="#" class="btn btn-sm btn-outline-primary">Start Learning</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Expert Section -->
+            <div class="progress-step">
+              <div class="step-dot"></div>
+              <div class="card lesson-card">
+                <div class="card-body">
+                  <div class="d-flex align-items-center mb-3">
+                    <span class="badge bg-dark me-2">Expert</span>
+                    <h3 class="lesson-title mb-0">4. Deep Learning & AI Implementation</h3>
+                  </div>
+                  <ul class="list-group list-group-flush mb-3">
+                    <li class="list-group-item">
+                      <i class="fas fa-check-circle text-success me-2"></i>
+                      TensorFlow and PyTorch fundamentals
+                    </li>
+                    <li class="list-group-item">
+                      <i class="fas fa-check-circle text-success me-2"></i>
+                      Neural networks and architectures
+                    </li>
+                    <li class="list-group-item">
+                      <i class="fas fa-check-circle text-success me-2"></i>
+                      Natural Language Processing (NLP)
+                    </li>
+                    <li class="list-group-item">
+                      <i class="fas fa-check-circle text-success me-2"></i>
+                      Computer vision applications
+                    </li>
+                    <li class="list-group-item">
+                      <i class="fas fa-check-circle text-success me-2"></i>
+                      Deployment of AI models
+                    </li>
+                  </ul>
+                  <!-- Expert Section Resources -->
+                  <div class="accordion mb-3" id="expertResources">
+                    <div class="card resource-card mb-2">
+                      <div class="card-header" id="expertResourcesHeading">
+                        <h5 class="mb-0">
+                          <button class="btn btn-link collapse-btn" type="button" data-bs-toggle="collapse" data-bs-target="#expertResourcesCollapse" aria-expanded="false" aria-controls="expertResourcesCollapse">
+                            <i class="fas fa-external-link-alt me-2"></i>Additional Resources
+                          </button>
+                        </h5>
+                      </div>
+                      <div id="expertResourcesCollapse" class="collapse" aria-labelledby="expertResourcesHeading" data-parent="#expertResources">
+                        <div class="card-body">
+                          <h5>Deep Learning Resources</h5>
+                          <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                              <a href="https://www.tensorflow.org/tutorials" target="_blank">TensorFlow Tutorials</a>
+                              <span class="text-muted d-block small">Official TensorFlow guides</span>
+                            </li>
+                            <li class="list-group-item">
+                              <a href="https://pytorch.org/tutorials/" target="_blank">PyTorch Tutorials</a>
+                              <span class="text-muted d-block small">Official PyTorch learning resources</span>
+                            </li>
+                            <li class="list-group-item">
+                              <a href="https://course.fast.ai/" target="_blank">Practical Deep Learning (fast.ai)</a>
+                              <span class="text-muted d-block small">Free practical DL course</span>
+                            </li>
+                            <li class="list-group-item">
+                              <a href="https://www.deeplearning.ai/" target="_blank">DeepLearning.AI</a>
+                              <span class="text-muted d-block small">Andrew Ng's deep learning courses</span>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Activities Accordion -->
+                  <div class="accordion mb-3" id="expertActivities">
+                    <div class="card activity-card mb-2">
+                      <div class="card-header" id="expertActivitiesHeading">
+                        <h5 class="mb-0">
+                          <button class="btn btn-link collapse-btn" type="button" data-bs-toggle="collapse" data-bs-target="#expertActivitiesCollapse">
+                            <i class="fas fa-tasks me-2"></i>Hands-on Activities
+                          </button>
+                        </h5>
+                      </div>
+                      <div id="expertActivitiesCollapse" class="collapse" aria-labelledby="expertActivitiesHeading" data-parent="#expertActivities">
+                        <div class="card-body">
+                          <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                              <strong>MNIST Classifier:</strong> Build a neural network to recognize handwritten digits
+                            </li>
+                            <li class="list-group-item">
+                              <strong>Transfer Learning:</strong> Fine-tune a pre-trained model for a custom task
+                            </li>
+                            <li class="list-group-item">
+                              <strong>Text Generation:</strong> Train an RNN to generate text in a specific style
+                            </li>
+                            <li class="list-group-item">
+                              <strong>Model Conversion:</strong> Convert a TensorFlow model to TensorFlow Lite
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Assignments Accordion -->
+                  <div class="accordion mb-3" id="expertAssignments">
+                    <div class="card assignment-card mb-2">
+                      <div class="card-header" id="expertAssignmentsHeading">
+                        <h5 class="mb-0">
+                          <button class="btn btn-link collapse-btn" type="button" data-bs-toggle="collapse" data-bs-target="#expertAssignmentsCollapse">
+                            <i class="fas fa-clipboard-check me-2"></i>Assignments
+                          </button>
+                        </h5>
+                      </div>
+                      <div id="expertAssignmentsCollapse" class="collapse" aria-labelledby="expertAssignmentsHeading" data-parent="#expertAssignments">
+                        <div class="card-body">
+                          <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                              <strong>Image Style Transfer:</strong> Implement neural style transfer between images
+                            </li>
+                            <li class="list-group-item">
+                              <strong>Chatbot:</strong> Build a simple sequence-to-sequence chatbot
+                            </li>
+                            <li class="list-group-item">
+                              <strong>Object Detection:</strong> Detect objects in images using YOLO or Faster R-CNN
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Project -->
+                  <div class="accordion" id="expertProject">
+                    <div class="card project-card">
+                      <div class="card-header" id="expertProjectHeading">
+                        <h5 class="mb-0">
+                          <button class="btn btn-link collapse-btn" type="button" data-bs-toggle="collapse" data-bs-target="#expertProjectCollapse">
+                            <i class="fas fa-project-diagram me-2"></i>Capstone Project
+                          </button>
+                        </h5>
+                      </div>
+                      <div id="expertProjectCollapse" class="collapse" aria-labelledby="expertProjectHeading" data-parent="#expertProject">
+                        <div class="card-body">
+                          <h5>End-to-End AI Application</h5>
+                          <p>Develop a complete AI application with frontend and backend:</p>
+                          <ul>
+                            <li>Choose a problem domain (CV, NLP, etc.)</li>
+                            <li>Train and optimize a deep learning model</li>
+                            <li>Create a Flask/FastAPI backend service</li>
+                            <li>Build a simple frontend interface</li>
+                            <li>Deploy using any cloud platform</li>
+                          </ul>
+                          <div class="alert alert-info">
+                            <strong>Learning Outcomes:</strong> Full-stack AI development, model optimization, API design, deployment strategies
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="d-flex justify-content-between align-items-center mt-3">
+                    <span class="text-muted">Estimated time: 6-8 weeks</span>
+                    <a href="#" class="btn btn-sm btn-outline-primary">Start Learning</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Final Projects Section -->
+            <div class="progress-step">
+              <div class="step-dot"></div>
+              <div class="card lesson-card bg-light">
+                <div class="card-body text-center">
+                  <h3 class="lesson-title mb-3"><i class="fas fa-rocket me-2"></i>Final Projects Gallery</h3>
+                  <p class="mb-4">Showcase your skills with these real-world AI projects</p>
+                  <div class="row">
+                    <div class="col-md-4 mb-3">
+                      <div class="card h-100">
+                        <div class="card-body">
+                          <span class="badge badge-ai mb-2">Beginner</span>
+                          <h5>Sentiment Analysis</h5>
+                          <p>Analyze product reviews using NLP</p>
+                          <hr>
+                          <h6>Activities:</h6>
+                          <ul class="text-start small">
+                            <li>Text preprocessing</li>
+                            <li>Bag-of-words model</li>
+                            <li>Basic classification</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                      <div class="card h-100">
+                        <div class="card-body">
+                          <span class="badge badge-ai mb-2">Intermediate</span>
+                          <h5>Predictive Model</h5>
+                          <p>House price prediction using ML</p>
+                          <hr>
+                          <h6>Activities:</h6>
+                          <ul class="text-start small">
+                            <li>Feature engineering</li>
+                            <li>Regression models</li>
+                            <li>Model evaluation</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                      <div class="card h-100">
+                        <div class="card-body">
+                          <span class="badge badge-ai mb-2">Advanced</span>
+                          <h5>Image Classifier</h5>
+                          <p>CNN for object recognition</p>
+                          <hr>
+                          <h6>Activities:</h6>
+                          <ul class="text-start small">
+                            <li>Data augmentation</li>
+                            <li>CNN architecture</li>
+                            <li>Transfer learning</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+
+      <!-- FAQ Tab -->
+      <div class="tab-pane fade" id="pills-faq" role="tabpanel">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <!-- FAQ 1 -->
+            <div class="card faq-card">
+              <div class="card-body">
+                <h3 class="faq-question card-title">1. What is Artificial Intelligence (AI)?</h3>
+                <p class="card-text">
+                  AI refers to the simulation of human intelligence in machines that are programmed to think and act like humans. Imagine machines that can learn and act like humans! That's the basic idea of AI. It's all about making computers intelligent enough to solve problems, understand information, and even make decisions on their own, just like we do.
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ 2 -->
+            <div class="card faq-card">
+              <div class="card-body">
+                <h3 class="faq-question card-title">2. What are the different types of AI?</h3>
+                <p class="card-text">
+                  There are different ways to approach AI, but here are two main categories:
+                </p>
+                <ul class="list-group list-group-flush mb-3">
+                  <li class="list-group-item">
+                    <span class="highlight">Narrow AI:</span> This is the kind you see most often, like AI assistants in your phone or self-driving cars. It's good at specific tasks, but not as flexible as humans.
+                  </li>
+                  <li class="list-group-item">
+                    <span class="highlight">General AI:</span> This is the holy grail of AI – machines that are as intelligent as us, able to learn and do anything humans can. We're still far from that, but it's a fascinating goal!
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- FAQ 3 -->
+            <div class="card faq-card">
+              <div class="card-body">
+                <h3 class="faq-question card-title">3. Why is Python popular for AI development?</h3>
+                <p class="card-text">
+                  Python is like a friendly coding language. It's easy to learn, powerful, and has tons of libraries specifically designed for AI, like:
+                </p>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="alert alert-info mb-2">
+                      <strong>NumPy:</strong> Handles numbers like a champ.
+                    </div>
+                    <div class="alert alert-info mb-2">
+                      <strong>Pandas:</strong> Organizes your data like a spreadsheet on steroids.
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="alert alert-info mb-2">
+                      <strong>scikit-learn:</strong> Has ready-made tools for common AI tasks.
+                    </div>
+                    <div class="alert alert-info mb-2">
+                      <strong>TensorFlow & PyTorch:</strong> Build complex AI models, like for image recognition or language translation.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- FAQ 4 -->
+            <div class="card faq-card">
+              <div class="card-body">
+                <h3 class="faq-question card-title">4. What are the career opportunities in AI with Python?</h3>
+                <p class="card-text">
+                  AI is a booming field, so there's a huge demand for people who know how to build and use it. With Python skills, you could be an <span class="highlight">AI engineer</span>, <span class="highlight">researcher</span>, <span class="highlight">data scientist</span>, or even start your own <span class="highlight">AI-powered business</span>!
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ 6 -->
+            <div class="card faq-card">
+              <div class="card-body">
+                <h3 class="faq-question card-title">6. Can You Do AI with Python?</h3>
+                <p class="card-text">
+                  Python's rich ecosystem makes it ideal for various AI tasks, from building simple scripts to complex models. Popular libraries like <span class="highlight">TensorFlow</span> and <span class="highlight">PyTorch</span> provide powerful tools for machine learning and deep learning.
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ 7 -->
+            <div class="card faq-card">
+              <div class="card-body">
+                <h3 class="faq-question card-title">7. Which Python Version is Best for AI?</h3>
+                <p class="card-text">
+                  While both Python 2 and 3 have AI applications, <span class="highlight">Python 3</span> is the recommended choice for new projects due to its better performance, security, and community support. Most AI libraries are already optimized for Python 3.
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ 8 -->
+            <div class="card faq-card">
+              <div class="card-body">
+                <h3 class="faq-question card-title">8. Is AI Hard in Python?</h3>
+                <p class="card-text">
+                  The difficulty depends on your prior programming experience and the specific AI task you're tackling. <span class="highlight">Basic AI concepts</span> in Python can be grasped relatively easily, but building <span class="highlight">complex models</span> requires deeper understanding and practice.
+                </p>
+              </div>
+            </div>
+
+            <!-- Resource Section -->
+            <div class="resource-section text-center">
+              <h4 class="mb-3">Want to learn more about AI with Python?</h4>
+              <a href="https://www.geeksforgeeks.org/python-ai/" target="_blank" class="btn btn-primary btn-lg">
+                Visit GeeksforGeeks Python AI Tutorial
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 
-    <footer class="bg-dark text-white py-4 mt-5">
-        <div class="container text-center">
-            <p>© 2023 AI With Python Tutorial. All rights reserved.</p>
-            <div class="social-icons">
-                <a href="#" class="text-white mx-2"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="text-white mx-2"><i class="fab fa-github"></i></a>
-                <a href="#" class="text-white mx-2"><i class="fab fa-linkedin"></i></a>
-            </div>
-        </div>
-    </footer>
+  <footer class="bg-dark text-white py-4 mt-5">
+    <div class="container text-center">
+      <p>© 2023 AI With Python Tutorial. All rights reserved.</p>
+      <div class="social-icons">
+        <a href="#" class="text-white mx-2"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="text-white mx-2"><i class="fab fa-github"></i></a>
+        <a href="#" class="text-white mx-2"><i class="fab fa-linkedin"></i></a>
+      </div>
+    </div>
+  </footer>
 
-    <!-- Bootstrap JS Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Bootstrap JS Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function showSolution(id) {
+      const element = document.getElementById(id);
+      if (element.style.display === "none") {
+        element.style.display = "block";
+      } else {
+        element.style.display = "none";
+      }
+    }
+
+    function showAnswer(id) {
+      const element = document.getElementById(id);
+      if (element.style.display === "none") {
+        element.style.display = "block";
+      } else {
+        element.style.display = "none";
+      }
+    }
+  </script>
 </body>
+
 </html>
